@@ -19,6 +19,7 @@ const readline   = require('readline');
 
 const inSCSS = 'static/scss/*.scss';
 const inHTML = 'static/*.html';
+const inJS = 'static/js/sources/*.js';
 
 const shell = {
     ask : async function(question)
@@ -323,6 +324,7 @@ const tasks = {
     'build' : function() {
         this['build-css']();
         this['build-html']();
+        this['build-js']();
     },
 
     'build-css' : function() {
@@ -333,6 +335,13 @@ const tasks = {
             .pipe(minifyCSS())
             .pipe(sourcemaps.write('.'))
             .pipe(dest('static/css'))
+            .pipe(connect.reload());
+    },
+
+    'build-js' : function() {
+        return src(inJS)
+            .pipe(concat('script.min.js'))
+            .pipe(dest('static/js'))
             .pipe(connect.reload());
     },
 
@@ -383,6 +392,7 @@ const tasks = {
                 .pipe(open({uri: "http://localhost:8081/backend"}));
             watch(inSCSS, tasks['build-css']);
             watch(inHTML, tasks['build-html']);
+            watch(inJS, tasks['build-js']);
         })
     }
 }
