@@ -1,0 +1,20 @@
+@import './variables.scss';
+
+// --------------------------------------------------- HEADER
+.module-menu
+{
+    text-align: center;
+    
+    .menu-item
+    {
+        display: inline-block;
+        padding: distance(1) distance(2);
+        font-size: 14px;
+        line-height: distance(2);
+
+        .menu {
+            display: none;  
+        }
+    }
+}
+

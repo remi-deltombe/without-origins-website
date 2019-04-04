@@ -1,0 +1,38 @@
+
+// Distance ---------------------------------
+$unit-distance: 12px;
+$unit-duration: 0.25s;
+
+@function distance($value:1) {
+  @return $unit-distance * $value;
+}
+
+@function duration($value:1) {
+  @return $unit-duration * $value;
+}
+
+// Colors ---------------------------------
+// Blue
+$color-blue-dark : rgb(0, 35,80);
+$color-blue : rgb(84, 158, 255);
+$color-blue-light : rgb(126, 182, 255);
+
+// Orange
+$color-orange-dark : rgb(137, 49, 0);
+$color-orange : rgb(245, 119,0);
+$color-orange-light : rgb(255, 151, 0);
+
+// Grey
+$color-grey: rgb(133, 133, 133);
+$color-grey-light: rgb(238, 238, 238);
+
+// White
+$color-white: rgb(255, 255, 255);
+
+// Social networks
+$color-facebook: rgb(96, 129, 196);
+$color-twitter: rgb(67, 189, 239);
+$color-youtube: rgb(241, 90, 75);
+
+// Site ---------------------------------
+$site-width: distance(98);

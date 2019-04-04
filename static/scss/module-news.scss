@@ -1,0 +1,21 @@
+@import './variables.scss';
+
+// --------------------------------------------------- HEADER
+.news-list
+{
+    overflow: hidden;
+
+    &:after
+    {
+        content:'';
+        display: block;
+        clear: both;
+    }
+
+}
+
+    .news-item
+    {
+        float:left;
+        width: 50%;
+    }
