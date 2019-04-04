@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/remi-deltombe/without-origins-website#readme",
   "dependencies": {
+    "ftp": "^0.3.10",
     "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
     "gulp-csso": "^3.0.1",
-    "gulp-sass": "^4.0.2"
+    "gulp-open": "^3.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-watch": "^5.0.1"
   }
 }
