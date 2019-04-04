@@ -22,6 +22,12 @@
             }
         }
 
+        &.is-active {
+            &, &:hover a {
+                background: $color-white-dark;
+            }
+        }
+
         &:hover
         {
             > .menu {

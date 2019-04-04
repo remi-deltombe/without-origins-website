@@ -1,0 +1,122 @@
+@import './variables.scss';
+
+// --------------------------------------------------- HEADER
+.wysiwyg
+{
+    position: relative;
+    padding: 0 distance(2);
+
+    h1
+    {
+        position: relative;
+        font-size: 40px;
+        line-height: 140%;
+        margin-bottom: distance(2);
+        padding-top: distance(2);
+        padding-bottom: distance();
+        font-weight: normal;
+        border-bottom: 1px solid $color-orange;
+
+        &:after
+        {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -1px;
+            left: 0; 
+            right: 70%;
+            height: 1px;
+            background: $color-blue-dark;
+        }
+    }
+
+    h2
+    {
+        font-size: 32px;
+        line-height: 140%;
+        color: $color-orange;
+        margin-bottom: distance(.5);
+        font-weight: normal;
+
+        &:before {
+            content: "▶ ";
+            font-size: 12px;
+            position: relative;
+            top: -6px;
+            margin-right: distance(.5);
+        }
+    }
+
+    h3
+    {
+        font-size: 24px;
+        line-height: 140%;
+        color: $color-blue;
+        margin-bottom: distance(.2);
+        font-weight: normal;
+    }
+
+    h4
+    {
+        font-size: 20px;
+        line-height: 140%;
+        color: $color-blue-dark;
+        margin-bottom: distance(.2);
+        font-weight: normal;
+    }
+
+    h5
+    {
+        font-size: 18px;
+        line-height: 140%;
+        color: $color-orange-dark;
+        margin-bottom: distance(.2);
+        font-weight: normal;
+    }
+
+    h6
+    {
+        font-size: 16px;
+        line-height: 140%;
+        color: $color-grey;
+        margin-bottom: distance(.2);
+        font-weight: normal;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 140%;
+        margin-bottom: distance();
+    }
+
+    h1, h2, h3, h4, h5, h6 
+    {
+        margin-top: distance(2);
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        background: $color-orange;
+        height: 1px;
+        border-left: distance(10) solid $color-blue-dark;
+        margin-bottom: distance();
+    }
+
+    ul, ol {
+        font-size: 13px;
+        padding-left: distance(2);
+        margin-bottom: distance();
+    }
+
+    a
+    {
+        text-decoration: underline;
+        color: $color-blue;
+    }
+
+    img
+    {
+        margin: distance() distance(2);
+    }
+}
