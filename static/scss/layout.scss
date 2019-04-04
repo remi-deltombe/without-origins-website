@@ -29,11 +29,24 @@ html
 
     .logo
     { 
-        float: left;
+        width: 100%;
         height: distance(3);
+        text-align: center;
         margin-top: distance(.25);
         margin-left: distance(1.5);
+
+        @media screen and (min-width: 640px) {
+            float: left;
+            width: auto;
+        }
+
+        @media screen and (max-width: 640px) {
+            padding: distance() 0;
+            margin:  0;
+            height: distance(5);
+        }
     }
+
 
     .module-social
     {

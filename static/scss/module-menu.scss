@@ -57,7 +57,12 @@
                 }
             }
         }
+    }
+}
 
+@media screen and (max-width: 640px) {
+    .module-menu {
+        display: none;
     }
 }
 
