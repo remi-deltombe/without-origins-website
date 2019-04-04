@@ -26,6 +26,10 @@
             &, &:hover a {
                 background: $color-white-dark;
             }
+
+            .menu a{
+                background: $color-orange;
+            }
         }
 
         &:hover
