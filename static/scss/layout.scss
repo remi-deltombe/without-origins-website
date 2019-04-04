@@ -2,18 +2,37 @@
 
 html
 {
-    background: $color-grey-light;
+    background: $color-white-dark;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 // --------------------------------------------------- HEADER
 .header
 {
+    position: relative;
+    z-index: 1;
     border-bottom: 3px solid $color-orange;
     background: $color-white;
+    
+    &:after
+    {
+        content:'';
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        right:80%;
+        height: 3px;
+        background: $color-blue-dark; 
+    }
 
     .logo
     { 
         float: left;
+        height: distance(3);
+        margin-top: distance(.25);
+        margin-left: distance(1.5);
     }
 
     .module-social
@@ -34,6 +53,7 @@ html
 {
     position: relative;
     padding: distance(4) 0 distance(2);
+    z-index: 0;
 
     &:after,
     &:before
@@ -67,7 +87,7 @@ html
     // Frame
     .frame 
     {
-        padding: distance();
+        padding: distance(1.5);
     }
 
     .frame-title
@@ -94,13 +114,30 @@ html
             border-bottom-color: $color-blue-dark;
             border-left-color: $color-blue-dark;
         }
+
+        .icon
+        {
+            color: $color-orange;
+            margin-right: distance(.25);
+        }
+
+        &.is-orange
+        {
+            color: $color-blue-dark;
+            background: $color-orange;
+            font-weight: bold;
+            .icon { color: $color-blue-dark; }
+            &:after { 
+                border-bottom-color: $color-orange;
+                border-left-color: $color-orange;
+            }
+        }
     }
 
     .frame-content
     {
         clear: both;
         position: relative;
-        padding: distance();
         background: $color-white;
         border-bottom: 1px solid $color-orange;
         box-shadow: 0 0 6px rgba(black, 0.1);
@@ -141,3 +178,13 @@ html
         max-width: $site-width;
         width: 100%;
     }
+
+
+
+// --------------------------------------------------- IMAGES
+img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}

@@ -15,10 +15,31 @@
         width: distance(2);
         height: distance(2);
         border-radius: 100%;
+        text-align: center;
+        line-height: distance(2);
+        color: $color-white;
+        transition: duration();
+        transform: scale(1);
+
+        &:hover {
+            transform: scale(1.2);
+        }
     }
 
-    .icon-facebook { background: $color-facebook; }
-    .icon-twitter { background: $color-twitter; }
-    .icon-youtube { background: $color-youtube; }
+    .icon-facebook 
+    { 
+        background: $color-facebook; 
+        &:hover  { background: darken($color-facebook, 20%); }
+    }
+    .icon-twitter 
+    { 
+        background: $color-twitter; 
+        &:hover  { background: darken($color-twitter, 20%); }
+    }
+    .icon-youtube 
+    { 
+        background: $color-youtube; 
+        &:hover  { background: darken($color-youtube, 20%); }
+    }
 }
 

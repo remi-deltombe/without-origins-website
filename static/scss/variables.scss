@@ -24,10 +24,11 @@ $color-orange-light : rgb(255, 151, 0);
 
 // Grey
 $color-grey: rgb(133, 133, 133);
-$color-grey-light: rgb(238, 238, 238);
+$color-grey-light: rgb(200, 200, 200);
 
 // White
 $color-white: rgb(255, 255, 255);
+$color-white-dark: rgb(238, 238, 238);
 
 // Social networks
 $color-facebook: rgb(96, 129, 196);
@@ -35,4 +36,4 @@ $color-twitter: rgb(67, 189, 239);
 $color-youtube: rgb(241, 90, 75);
 
 // Site ---------------------------------
-$site-width: distance(98);
+$site-width: distance(110);

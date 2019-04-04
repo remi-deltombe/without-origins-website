@@ -7,14 +7,57 @@
     
     .menu-item
     {
+        position: relative;
         display: inline-block;
-        padding: distance(1) distance(2);
         font-size: 14px;
         line-height: distance(2);
 
-        .menu {
-            display: none;  
+        a {
+            display: block; 
+            padding: distance(1) distance(2);
+            &:hover 
+            {
+                color: $color-orange;
+                transition: duration();
+            }
         }
+
+        &:hover
+        {
+            > .menu {
+                display: block
+            }
+        }
+
+        .menu .menu { display: none; }
+        .menu {
+            display: none;
+            position: absolute;
+            z-index: -1;
+            top: 100%;
+            background: $color-orange;
+            padding: 0;
+            text-align: left;
+            box-shadow: 0 2px 2px rgba($color-blue-dark, 0.4);
+            .menu-item 
+            {
+                display: block;
+            }
+
+            a {
+                padding: distance(.5) distance(1);
+                border-bottom: 1px solid $color-orange-light;
+                white-space: nowrap;
+                color: $color-white;
+
+                &:hover 
+                {
+                    color: $color-blue-dark;
+                    transition: duration();
+                }
+            }
+        }
+
     }
 }
 

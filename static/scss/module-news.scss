@@ -1,9 +1,11 @@
 @import './variables.scss';
+@import './module-social.scss';
 
 // --------------------------------------------------- HEADER
 .news-list
 {
     overflow: hidden;
+    padding: distance(.5);
 
     &:after
     {
@@ -12,10 +14,133 @@
         clear: both;
     }
 
-}
-
     .news-item
     {
+        display: block;
+        position: relative;
         float:left;
         width: 50%;
+        padding: distance(.5);
+
+        &:after
+        {
+            content:'';
+            display: block;
+            clear: both;
+        }
+
+        &:nth-of-type(n+3)
+        {
+            position: relative;
+            margin-top: distance(.5);
+            padding-top: distance();
+
+            &:before
+            {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                height: 1px;
+                left: distance(.5);
+                right: distance(1);
+                background: $color-grey-light;
+            }
+        }
     }
+
+    .news-link
+    {
+        background: #fff;
+        display: block;
+        padding-right: distance();
+
+        &:hover 
+        {
+            .news-more { color: $color-orange; }
+            .news-image {
+                img { opacity: 0.3; }
+                &:after
+                {
+                    background-color: rgba($color-white, 1);
+                    transform: rotate(90deg);
+                }
+                &:before
+                {
+                    background-color: rgba($color-white, 1);
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    .news-image
+    {
+        float: left; 
+        margin-right: distance();
+        background: $color-blue-dark;
+        position: relative;
+
+        img {
+            display: block;
+            height: distance(12);
+            height: distance(12);
+            transition: duration();
+        }
+
+        &:before, &:after
+        {
+            content: '';
+            z-index: 1;
+            display: block;
+            position: absolute;
+            width: distance(2);
+            height: 2px;
+            background-color: rgba($color-white, 0);
+            top:50%;
+            left:50%;
+            margin-left: distance(-1);
+            margin-top: -1px;
+            transform: rotate(0deg);
+            transition: duration();
+        }
+
+        &:before{
+            transform: rotate(90deg);
+        }
+    }
+
+    .news-title
+    {
+        padding-top: distance();
+        font-size: 18px;
+    }
+
+    .news-author
+    {
+        margin-bottom: distance(.5);
+        color: $color-orange;
+    }
+
+    .news-more
+    {
+        font-weight: bold;
+        transition: duration();
+        margin-top: distance(.5);
+    }
+
+    .news-social { 
+        @extend .module-social;
+
+        position: absolute;
+        bottom: 0;
+        right: distance(); 
+        padding: distance(.5);
+
+        .icon {
+            line-height: distance(1.8);
+            width: distance(1.7);
+            height: distance(1.7);
+        }
+    }
+}
