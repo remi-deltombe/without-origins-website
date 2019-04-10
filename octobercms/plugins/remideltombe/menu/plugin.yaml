@@ -6,8 +6,8 @@ plugin:
     homepage: ''
 navigation:
     main-menu-item:
-        label: Menu
-        url: remideltombe/menu/menucontroller
+        label: Menus
+        url: remideltombe/menu/menus
         icon: icon-th-list
         permissions:
             - remideltombe.menu.edit_menu

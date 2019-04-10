@@ -7,7 +7,7 @@ plugin:
 navigation:
     page:
         label: Pages
-        url: remideltombe/page/pagecontroller
+        url: remideltombe/page/pages
         icon: icon-file-o
         permissions:
             - remideltombe.page.edit_page

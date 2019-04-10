@@ -1,0 +1,10 @@
+name: Pages
+form: $/remideltombe/page/models/page/fields.yaml
+modelClass: RemiDeltombe\Page\Models\Page
+defaultRedirect: remideltombe/page/pages
+create:
+    redirect: 'remideltombe/page/pages/update/:id'
+    redirectClose: remideltombe/page/pages
+update:
+    redirect: remideltombe/page/pages
+    redirectClose: remideltombe/page/pages

@@ -2,25 +2,25 @@ plugin:
     name: 'remideltombe.news::lang.plugin.name'
     description: 'remideltombe.news::lang.plugin.description'
     author: 'Remi Deltombe'
-    icon: icon-newspaper-o
+    icon: oc-icon-newspaper-o
     homepage: ''
 navigation:
     news:
         label: News
-        url: remideltombe/news/itemcontroller
+        url: remideltombe/news/items
         icon: icon-newspaper-o
         permissions:
             - remideltombe.news.edit_item
         sideMenu:
-            item:
-                label: Item
-                url: remideltombe/news/itemcontroller
+            items:
+                label: Items
+                url: remideltombe/news/items
                 icon: icon-newspaper-o
                 permissions:
                     - remideltombe.news.edit_item
-            category:
-                label: Category
-                url: remideltombe/news/categorycontroller
+            categories:
+                label: Categories
+                url: remideltombe/news/categories
                 icon: icon-sort-alpha-asc
                 permissions:
                     - remideltombe.news.edit_category
