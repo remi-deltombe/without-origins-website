@@ -4,6 +4,13 @@ columns:
         type: number
         searchable: true
         sortable: true
+    game_id:
+        label: Game
+        type: text
+        relation: game
+        select: name
+        searchable: true
+        sortable: true
     name:
         label: Name
         type: text

@@ -11,6 +11,13 @@ columns:
         select: name
         searchable: true
         sortable: true
+    game_id:
+        label: Game
+        type: text
+        relation: game
+        select: name
+        searchable: true
+        sortable: true
     title:
         label: "List title"
         type: text

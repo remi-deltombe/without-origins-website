@@ -26,7 +26,8 @@ class Item extends Model
     ];
 
     public $belongsTo = [
-        'category' => ['RemiDeltombe\News\Models\Category']
+        'category' => ['RemiDeltombe\News\Models\Category'],
+        'game' => ['RemiDeltombe\Esport\Models\Game']
     ];
 
     public function scopeByCategory($query, $status = 'approved', $onlyMine = false, $due = null)

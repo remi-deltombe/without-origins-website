@@ -1,0 +1,17 @@
+plugin:
+    name: 'remideltombe.esport::lang.plugin.name'
+    description: 'remideltombe.esport::lang.plugin.description'
+    author: 'Remi Deltombe'
+    icon: oc-icon-gamepad
+    homepage: ''
+permissions:
+    remideltombe.socialnetworks.manage_game:
+        tab: Esport
+        label: 'Manage games'
+navigation:
+    esport:
+        label: Esport
+        url: remideltombe/esport/games
+        icon: icon-gamepad
+        permissions:
+            - remideltombe.socialnetworks.manage_game

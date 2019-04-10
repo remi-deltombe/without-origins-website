@@ -13,6 +13,13 @@ fields:
             field: title
             type: url
         type: text
+    game:
+        label: Game
+        nameFrom: name
+        descriptionFrom: description
+        emptyOption: None
+        span: auto
+        type: relation
     category:
         label: Category
         nameFrom: name

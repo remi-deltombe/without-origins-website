@@ -26,4 +26,9 @@ class Page extends Model
      */
     public $rules = [
     ];
+
+
+    public $belongsTo = [
+        'game' => ['RemiDeltombe\Esport\Models\Game']
+    ];
 }

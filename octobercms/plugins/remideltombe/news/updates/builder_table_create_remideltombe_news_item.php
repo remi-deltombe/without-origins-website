@@ -13,6 +13,7 @@ class BuilderTableCreateRemideltombeNewsItem extends Migration
             
             $table->increments('id');
             $table->integer('category_id')->nullable();
+            $table->integer('game_id')->nullable();
 
             $table->text('title');
             $table->string('url', 256);

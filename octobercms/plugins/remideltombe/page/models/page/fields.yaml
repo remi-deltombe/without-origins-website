@@ -13,6 +13,13 @@ fields:
             field: title
             type: url
         type: text
+    game:
+        label: Game
+        nameFrom: name
+        descriptionFrom: description
+        emptyOption: None
+        span: auto
+        type: relation
     is_active:
         label: Active
         span: auto
@@ -56,15 +63,3 @@ tabs:
             defaultFrom: description
             type: textarea
             tab: SEO
-        publication_author:
-            label: Author
-            span: auto
-            type: text
-            tab: Publication
-        publication_date:
-            label: Date
-            mode: datetime
-            span: auto
-            type: datepicker
-            tab: Publication
-            default: now

@@ -4,6 +4,8 @@ use System\Classes\PluginBase;
 
 class Plugin extends PluginBase
 {
+    public $require = ['RemiDeltombe.Esport'];
+
     public function registerComponents()
     {
         return [
