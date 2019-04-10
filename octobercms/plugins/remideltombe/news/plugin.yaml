@@ -2,7 +2,7 @@ plugin:
     name: 'remideltombe.news::lang.plugin.name'
     description: 'remideltombe.news::lang.plugin.description'
     author: 'Remi Deltombe'
-    icon: oc-icon-adjust
+    icon: icon-newspaper-o
     homepage: ''
 navigation:
     news:
