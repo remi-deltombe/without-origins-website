@@ -27,7 +27,7 @@
     }
 
     .icon-facebook 
-    { 
+    {
         background: $color-facebook; 
         &:hover  { background: darken($color-facebook, 20%); }
     }
@@ -40,6 +40,26 @@
     { 
         background: $color-youtube; 
         &:hover  { background: darken($color-youtube, 20%); }
+    }
+    .icon-discord 
+    { 
+        background: $color-discord; 
+        font-size: 120%;
+        i {
+            position: relative;
+            top: 1px;
+        }
+        &:hover  { background: darken($color-discord, 20%); }
+    }
+    .icon-twitch 
+    { 
+        background: $color-twitch; 
+        font-size: 120%;
+        i {
+            position: relative;
+            top: 1px;
+        }
+        &:hover  { background: darken($color-twitch, 20%); }
     }
 }
 

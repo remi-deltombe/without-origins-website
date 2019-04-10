@@ -1,0 +1,11 @@
+plugin:
+    name: 'remideltombe.socialnetworks::lang.plugin.name'
+    description: 'remideltombe.socialnetworks::lang.plugin.description'
+    author: 'Remi Deltombe'
+    icon: oc-icon-exchange
+    homepage: ''
+permissions:
+    remideltombe.socialnetworks.manage:
+        tab: Content
+        label: 'Manage social networks'
+

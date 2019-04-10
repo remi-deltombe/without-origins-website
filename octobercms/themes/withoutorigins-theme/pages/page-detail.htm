@@ -1,0 +1,17 @@
+title = "Page detail"
+url = "/:url"
+layout = "default"
+is_hidden = 0
+
+[pageDetail]
+url = "{{ :url }}"
+==
+
+<div class="module module-page">
+    <div class="page-detail">
+        {% set item = pageDetail.page() %}
+        {% if item %}
+            {% partial 'frame' image=item.image content_wysiwyg=item.content %}
+        {% endif %}
+    </div>
+</div>

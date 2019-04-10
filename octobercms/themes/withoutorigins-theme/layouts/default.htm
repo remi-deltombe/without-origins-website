@@ -1,0 +1,77 @@
+[socialNetworksMenu]
+
+[socialNetworksTweets]
+
+[socialNetworksTv]
+
+[menuTree]
+id = 1
+==
+<!doctype html>
+<html lang=fr>
+    <head>
+        <meta charset="utf-8">
+        <title>Without Origins</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ 'assets/css/style.css'|theme }}">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    </head>
+    <body>
+        <!-- -------------------------------- HEADER -->
+        <div class="header">
+            <div class="header-content">
+                <!-- ---- MODULE : Menu -->
+                <div class="logo">
+                    <a href="/">
+                        <img src="{{ 'assets/images/logo.png'|theme }}" alt="Without Origins Logo" width=229 height=47>
+                    </a>
+                </div>
+
+                <!-- ---- MODULE : Social -->
+                {% component 'socialNetworksMenu' %}
+                
+                <!-- ---- MODULE : Menu main -->
+                {% component 'menuTree' %}
+            </div>
+        </div>
+
+        <!-- -------------------------------- BODY -->
+        <div class="body">
+            <div class="body-background"><img src="{{ 'assets/images/body-bg.jpg'|theme }}" alt=""></div>
+            <div class="body-content">
+                <div class="columns">
+
+                    <div class="column column-right">
+                        {% if twitch_link %}
+                            {% partial 'frame' title="WithoutOriginsTv" icon="twitch" component="socialNetworksTv" %}
+                        {% endif %}
+
+                        {% if twitter_link %}
+                            {% partial 'frame' title="Tweets" icon="twitter" component="socialNetworksTweets" %}
+                        {% endif %}
+                    </div>
+
+                    <div class="column column-left">
+                        {% page %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -------------------------------- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+    
+                <!-- ---- MODULE : Social -->
+                {% component 'socialNetworksMenu' %}
+
+                <!-- ---- MODULE : Copyright -->
+                <div class="module module-copyright">
+                    2019 - Without Origins  All rights reserved
+                </div>
+            </div>
+        </div>
+        <script src="{{ 'assets/js/script.js'|theme }}"></script>
+    </body>
+</html>

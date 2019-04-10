@@ -105,13 +105,18 @@
                         </div>
 
                         <!-- ---- MODULE : Tweets -->
-                        <div class="module module-tv">
-                            <div class="frame">
-                                <div class="frame-title">
-                                    <span class="icon icon-news"><i class="fab fa-twitch"></i></span> Without Origins TV
-                                </div>
-                                <div class="frame-content">
-                                    <img src="images/dynamic.jpg" alt="Sample" width=400 height=240>
+                        <div class="frame">
+                            <div class="frame-title">
+                                <span class="icon icon-news"><i class="fab fa-twitch"></i></span> Without Origins TV
+                            </div>
+                            <div class="frame-content">
+                                <div class="module module-tweets">
+                                    <div class="mask">
+                                        <div class="mask-content">
+                                            <a class="twitter-timeline" data-lang="fr" data-height="500" data-theme="light" data-link-color="#E95F28" href="https://twitter.com/WithoutOriginTV?ref_src=twsrc%5Etfw">Tweets by WithoutOriginTV</a> 
+                                        </div>
+                                    </div>
+                                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                                 </div>
                             </div>
                         </div>
@@ -280,7 +285,8 @@
                                         <span class="icon icon-news"><i class="fab fa-twitch"></i></span> Without Origins TV
                                     </div>
                                     <div class="frame-content">
-                                        <img src="images/dynamic.jpg" alt="Sample" width=400 height=240>
+                                        <iframe src="https://player.twitch.tv/?channel=withoutoriginstv">
+                                        </iframe>
                                     </div>
                                 </div>
                                 
@@ -328,6 +334,7 @@
                 </div>
             </div>
         </div>
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
         <script src="js/script.min.js"></script>
     </body>
 </html>

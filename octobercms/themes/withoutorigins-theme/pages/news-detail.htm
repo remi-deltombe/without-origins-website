@@ -1,0 +1,17 @@
+title = "News detail"
+url = "/news/:url"
+layout = "default"
+is_hidden = 0
+
+[newsDetail]
+url = "{{ :url }}"
+==
+
+<div class="module module-news">
+    <div class="news-detail">
+        {% set item = newsDetail.item() %}
+        {% if item %}
+            {% partial 'frame' title="News" icon="rss" image=item.image content_wysiwyg=item.content %}
+        {% endif %}
+    </div>
+</div>

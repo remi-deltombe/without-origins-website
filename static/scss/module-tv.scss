@@ -3,13 +3,12 @@
 // --------------------------------------------------- HEADER
 .module-tv
 {
-    .frame-content {
-        padding: distance();
-    }
+    padding: distance();
 
-    img {
+    iframe {
         display: block;
         width: 100%;
+        height: distance(20);
     }
 }
 
