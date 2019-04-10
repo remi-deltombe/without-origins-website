@@ -1,0 +1,10 @@
+name: Games
+form: $/remideltombe/esport/models/game/fields.yaml
+modelClass: RemiDeltombe\Esport\Models\Game
+defaultRedirect: remideltombe/esport/games
+create:
+    redirect: 'remideltombe/esport/games/update/:id'
+    redirectClose: remideltombe/esport/games
+update:
+    redirect: remideltombe/esport/games
+    redirectClose: remideltombe/esport/games

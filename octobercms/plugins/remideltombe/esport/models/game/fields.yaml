@@ -1,0 +1,13 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        required: 1
+        type: text
+    menu:
+        label: Menu
+        nameFrom: name
+        descriptionFrom: description
+        emptyOption: None
+        span: auto
+        type: relation
