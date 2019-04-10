@@ -1,0 +1,33 @@
+plugin:
+    name: 'remideltombe.news::lang.plugin.name'
+    description: 'remideltombe.news::lang.plugin.description'
+    author: 'Remi Deltombe'
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    news:
+        label: News
+        url: remideltombe/news/itemcontroller
+        icon: icon-newspaper-o
+        permissions:
+            - remideltombe.news.edit_item
+        sideMenu:
+            item:
+                label: Item
+                url: remideltombe/news/itemcontroller
+                icon: icon-newspaper-o
+                permissions:
+                    - remideltombe.news.edit_item
+            category:
+                label: Category
+                url: remideltombe/news/categorycontroller
+                icon: icon-sort-alpha-asc
+                permissions:
+                    - remideltombe.news.edit_category
+permissions:
+    remideltombe.news.edit_item:
+        tab: Content
+        label: 'Edit news items'
+    remideltombe.news.edit_category:
+        tab: Content
+        label: 'Edit news categories'

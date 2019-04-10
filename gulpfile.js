@@ -16,6 +16,7 @@ const ftpClient  = require('ftp');
 const mkdir      = util.promisify(fs.mkdir);
 const request    = require('request');
 const readline   = require('readline');
+const through    = require('through2');
 
 const inSCSS = 'static/scss/*.scss';
 const inHTML = 'static/*.html';
@@ -328,14 +329,23 @@ const tasks = {
     },
 
     'build-css' : function() {
-        return src(inSCSS)
-            .pipe(sourcemaps.init())
-            .pipe(sass())
-            .pipe(concat('style.css'))
-            .pipe(minifyCSS())
-            .pipe(sourcemaps.write('.'))
-            .pipe(dest('static/css'))
-            .pipe(connect.reload());
+        return Promise.all([
+            src(inSCSS)
+                .pipe(sourcemaps.init())
+                .pipe(sass())
+                .pipe(concat('style.css'))
+                .pipe(minifyCSS())
+                .pipe(sourcemaps.write('.'))
+                .pipe(dest('static/css'))
+                .pipe(connect.reload()),
+            src(inSCSS)
+                .pipe(sourcemaps.init())
+                .pipe(sass())
+                .pipe(concat('style.css'))
+                .pipe(minifyCSS())
+                .pipe(sourcemaps.write('.'))
+                .pipe(dest('octobercms/themes/withoutorigins-theme/assets/css'))
+        ]);
     },
 
     'build-js' : function() {
@@ -351,36 +361,41 @@ const tasks = {
             .pipe(connect.reload());
     },
 
-    'docker-start' : function() { docker.start(); },
-    'docker-stop' : function() { docker.stop(); },
-    'docker-reset' : function() { docker.uninstall(); },
+    'docker-start' : function() { return docker.start(docker); },
+    'docker-stop' : function()  { return docker.stop(docker); },
+    'docker-reset' : function() { return docker.uninstall(docker); },
 
     'push-static' : function() {
-        ftp.connect().then(async ()=>{
-            // Remove previous folder
-            await ftp.removeDir("static.withoutorigins.fr")
+        return new Promise(r=>{
+            ftp.connect().then(async ()=>{
+                // Remove previous folder
+                await ftp.removeDir("static.withoutorigins.fr")
 
-            // Copy static folder
-            await ftp.copy("static", "static.withoutorigins.fr")
-        });
+                // Copy static folder
+                await ftp.copy("static", "static.withoutorigins.fr")
+                r();
+            });
+        })
     },
 
     'push-staging' : function() {
-        ftp.connect().then(async ()=>{
-            console.log("Cleaning themes and plugins");
-            await ftp.removeDir("staging.withoutorigins.fr/themes");
-            await ftp.removeDir("staging.withoutorigins.fr/plugins");
+        return new Promise(r=>{
+            ftp.connect().then(async ()=>{
+                console.log("Cleaning themes and plugins");
+                await ftp.removeDir("staging.withoutorigins.fr/themes");
+                await ftp.removeDir("staging.withoutorigins.fr/plugins");
 
-            console.log("Uploading themes and plugins");
-            await ftp.copy("octobercms/themes", "staging.withoutorigins.fr/themes");
-            await ftp.copy("octobercms/plugins", "staging.withoutorigins.fr/plugins");
+                console.log("Uploading themes and plugins");
+                await ftp.copy("octobercms/themes", "staging.withoutorigins.fr/themes");
+                await ftp.copy("octobercms/plugins", "staging.withoutorigins.fr/plugins");
 
-            console.log("Migrating db");
-            request('http://devops.withoutorigins.fr/artisan.php?command=1&env=0', { }, (err, res, body) => {
-                if (err) { return console.log(err); }
-                console.log(body.replace(/\<span style="width:10px;display:inline-block;"\>\<\/span\>/g, '  ').replace(/\<br\>/g, '\n'));
-                console.log("Done!")
-            })
+                console.log("Migrating db");
+                request('http://devops.withoutorigins.fr/artisan.php?command=1&env=0', { }, (err, res, body) => {
+                    if (err) { return console.log(err); }
+                    console.log(body.replace(/\<span style="width:10px;display:inline-block;"\>\<\/span\>/g, '  ').replace(/\<br\>/g, '\n'));
+                    r();
+                })
+            });
         });
     },
 

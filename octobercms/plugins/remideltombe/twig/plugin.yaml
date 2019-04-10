@@ -1,0 +1,6 @@
+plugin:
+    name: 'remideltombe.twig::lang.plugin.name'
+    description: 'remideltombe.twig::lang.plugin.description'
+    author: 'Remi Deltombe'
+    icon: oc-icon-question
+    homepage: ''

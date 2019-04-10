@@ -1,0 +1,47 @@
+description = "frame partial"
+icon=false
+title=false
+image=false
+image_alt=''
+component=false
+content=false
+content_raw=false
+content_wysiwyg=false
+module=false
+==
+
+<div class="frame">
+    {% if title %}
+    <div class="frame-title">
+        {% if icon %}
+            <span class="icon">
+                <i class="fab fa-{{icon}}"></i>
+            </span>
+        {% endif %}
+        {{title}}
+    </div>
+    {% endif %}
+
+    {% if image %}
+    <div class="frame-image">
+         <img src="{{ image | media }}" alt="{{image_alt}}">
+    </div>
+    {% endif %}
+    
+    <div class="frame-content">
+        {% if component %}
+            {% component component %}
+        {% endif %}
+        {% if content %}
+            {{ content }}
+        {% endif %}
+        {% if content_raw %}
+            {{ content_raw | raw }}
+        {% endif %}
+        {% if content_wysiwyg %}
+            <div class="wysiwyg">
+                {{ content_wysiwyg | raw }}
+            </div>
+        {% endif %}
+    </div>
+</div>

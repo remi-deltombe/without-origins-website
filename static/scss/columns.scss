@@ -28,8 +28,8 @@
 .column-11 { width: (100% / 12) * 11; }
 .column-12 { width: (100% / 12) * 12; }
  
-.column-left { @extend .column-9; }
-.column-right { @extend .column-3; float: right;}
+.column-left { @extend .column-8; }
+.column-right { @extend .column-4; float: right;}
 
 @media screen and (max-width: 1024px) {
  

@@ -1,0 +1,10 @@
+plugin:
+    name: 'remideltombe.minify::lang.plugin.name'
+    description: 'remideltombe.minify::lang.plugin.description'
+    author: 'Remi Deltombe'
+    icon: oc-icon-question
+    homepage: ''
+permissions:
+    remideltombe.minify.manage:
+        tab: Optimization
+        label: 'Manage minification'

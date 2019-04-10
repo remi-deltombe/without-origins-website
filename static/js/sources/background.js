@@ -4,7 +4,7 @@ class Background
     constructor()
     {
         window.addEventListener('load', e=>{
-            this._el = _('.body-background');
+            this._el = _('.body-background')[0];
             window.addEventListener('resize', this.update.bind(this));
             window.addEventListener('scroll', this.update.bind(this));
             this.update();
