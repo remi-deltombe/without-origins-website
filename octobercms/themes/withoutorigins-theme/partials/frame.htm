@@ -24,7 +24,7 @@ module=false
 
     {% if image %}
     <div class="frame-image">
-         <img src="{{ image | media }}" alt="{{image_alt}}">
+         <img src="{{ image | media | resize(748) }}" alt="{{image_alt}}">
     </div>
     {% endif %}
     

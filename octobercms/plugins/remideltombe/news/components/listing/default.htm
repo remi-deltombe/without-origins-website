@@ -4,7 +4,7 @@
             <div class="news-item">
                 <a class="news-link" href="{{item.url}}">
                     <div class="news-image">
-                         <img src="{{ item.thumb | media}}" alt="News" width=200 height=200>
+                         <img src="{{ item.thumb | media | resize(200, 200)}}" alt="News" width=200 height=200>
                     </div>
                     <div class="news-title">{{ item.title }}</div>
                     {% if item.publication_date or item.publication_author %}
