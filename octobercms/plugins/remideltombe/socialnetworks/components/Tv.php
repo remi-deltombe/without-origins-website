@@ -20,8 +20,10 @@ class Tv extends \Cms\Classes\ComponentBase
         if(strlen($channel))
         {
             $channel = explode('?', $channel)[0];
+            $channel = explode('//', $channel);
+            $channel = isset($channel[1]) ? $channel[1] : '';
             $channel = explode('/', $channel);
-            $channel = count($channel > 1) ? $channel[1] : '';
+            $channel = isset($channel[1]) ? $channel[1] : '';
         }
         
         $this->page['twitch_channel']  = $channel;
