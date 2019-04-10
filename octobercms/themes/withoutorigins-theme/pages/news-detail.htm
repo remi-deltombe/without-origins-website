@@ -11,7 +11,7 @@ url = "{{ :url }}"
     <div class="news-detail">
         {% set item = newsDetail.item() %}
         {% if item %}
-            {% partial 'frame' title="News" icon="rss" image=item.image content_wysiwyg=item.content %}
+            {% partial 'frame' title="News" icon="fas fa-rss" image=item.image content_wysiwyg=item.content %}
         {% endif %}
     </div>
 </div>
