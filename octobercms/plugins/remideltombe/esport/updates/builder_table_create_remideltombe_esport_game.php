@@ -12,8 +12,10 @@ class BuilderTableCreateRemideltombeEsportGame extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('menu_id')->nullable();
-            $table->string('name', 64);
+            $table->string('name', 256);
+            $table->string('slug', 256);
             $table->string('logo', 256)->nullable();
+            $table->string('background', 256)->nullable();
         });
     }
     

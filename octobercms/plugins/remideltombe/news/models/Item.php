@@ -22,7 +22,7 @@ class Item extends Model
      */
     public $rules = [
         'title' => 'required',
-        'url' => 'required|unique:remideltombe_news_item'
+        'slug' => 'required|unique:remideltombe_news_item'
     ];
 
     public $belongsTo = [
@@ -42,5 +42,19 @@ class Item extends Model
     public function scopeLatest($query, $status = 'approved', $onlyMine = false, $due = null)
     {
         return $query->where('is_active', true)->limit(4)->orderBy('publication_date', 'DESC');
+    }
+
+    public function link()
+    {
+        $url = Settings::get('detail_slug').'/' . $this->slug;
+        if($this->game)
+        {
+            $url = $this->game->link() . $url;
+        }
+        else
+        {
+            $url = '/'.$url;
+        }
+        return $url;
     }
 }

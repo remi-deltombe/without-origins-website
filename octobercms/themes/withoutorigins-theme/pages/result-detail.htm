@@ -1,0 +1,11 @@
+title = "Result detail"
+url = "/results/:slug"
+layout = "default"
+is_hidden = 0
+
+[esportResult]
+slug = "{{ :slug }}"
+==
+
+{% set item = esportResult.item() %}
+{% partial 'frame' title="Resultat" image=item.image icon="fas fa-rss" component="esportResult" %}

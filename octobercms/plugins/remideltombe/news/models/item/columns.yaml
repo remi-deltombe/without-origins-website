@@ -11,23 +11,27 @@ columns:
         select: name
         searchable: true
         sortable: true
-    game_id:
+    game:
         label: Game
-        type: text
-        relation: game
-        select: name
-        searchable: true
-        sortable: true
+        type: partial
+        valueFrom: game_id
+        path: ~/plugins/remideltombe/page/partials/_field_game.htm
     title:
-        label: "List title"
+        label: Title
         type: text
         searchable: true
         sortable: true
-    url:
-        label: url
+    slug:
+        label: slug
         type: text
         searchable: true
+        invisible: true
         sortable: true
+    link:
+        label: Link
+        type: partial
+        valueFrom: slug
+        path: ~/plugins/remideltombe/page/partials/_field_link.htm
     is_active:
         label: Active
         type: text

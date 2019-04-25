@@ -1,17 +1,9 @@
 title = "Page detail"
-url = "/:url"
+url = "/:slug"
 layout = "default"
 is_hidden = 0
 
 [pageDetail]
-id = -1
-url = "{{ :url }}"
+slug = "{{ :slug }}"
 ==
-<div class="module module-page">
-    <div class="page-detail">
-        {% set item = pageDetail.page() %}
-        {% if item %}
-            {% partial 'frame' image=item.image content_wysiwyg=item.content %}
-        {% endif %}
-    </div>
-</div>
+{% partial 'frame' component="pageDetail" %}

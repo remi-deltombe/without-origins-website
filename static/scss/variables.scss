@@ -1,4 +1,6 @@
 
+$env : "front" !default;
+
 // Distance ---------------------------------
 $unit-distance: 12px;
 $unit-duration: 0.25s;
@@ -8,7 +10,7 @@ $unit-duration: 0.25s;
 }
 
 @function duration($value:1) {
-  @return $unit-duration * $value;
+  @return $unit-duration * $value; 
 }
 
 // Colors ---------------------------------
@@ -22,9 +24,17 @@ $color-orange-dark : rgb(137, 49, 0);
 $color-orange : rgb(245, 119,0);
 $color-orange-light : rgb(255, 151, 0);
 
+// Green
+$color-green : #8DBD61;
+
+// Red
+$color-red : rgb(255, 0, 0);
+
 // Grey
+$color-grey-dark: rgb(90, 90, 90);
 $color-grey: rgb(133, 133, 133);
 $color-grey-light: rgb(200, 200, 200);
+$color-grey-lighten: rgb(238, 238, 238);
 
 // White
 $color-white: rgb(255, 255, 255);
@@ -39,4 +49,4 @@ $color-twitch: rgb(100, 65, 164);
 
 
 // Site ---------------------------------
-$site-width: distance(98);
+$site-width: distance(110);

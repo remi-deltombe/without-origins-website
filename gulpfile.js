@@ -19,6 +19,7 @@ const readline   = require('readline');
 const through    = require('through2');
 
 const inSCSS = 'static/scss/*.scss';
+const inBackendSCSS = 'static/backend/scss/*.scss';
 const inHTML = 'static/*.html';
 const inJS = 'static/js/sources/*.js';
 
@@ -148,7 +149,8 @@ const docker = {
             console.log('Install october');
             await shell.exec([
                 "docker-compose exec -T web php artisan october:up",
-                "docker-compose exec -T mysql mysql -u root -proot -D octobercms -e 'INSERT INTO system_parameters(`namespace`, `group`, `item`, `value`) VALUES (\"cms\", \"theme\", \"active\", \"\\\"without-origins\\\"\");'"
+                "docker-compose exec -T mysql mysql -u root -proot -D octobercms -e 'INSERT INTO system_parameters(`namespace`, `group`, `item`, `value`) VALUES (\"cms\", \"theme\", \"active\", \"\\\"withoutorigins-theme\\\"\");'",
+                "docker-compose exec -T mysql mysql -u root -proot -D octobercms -e 'INSERT INTO system_settings(`item`, `value`) VALUES (\"remideltombe_news_settings\", \"{\\\"detail_slug\\\":\\\"news\\\"}\");'"
             ])
 
             // Stop
@@ -344,15 +346,26 @@ const tasks = {
                 .pipe(concat('style.css'))
                 .pipe(minifyCSS())
                 .pipe(sourcemaps.write('.'))
-                .pipe(dest('octobercms/themes/withoutorigins-theme/assets/css'))
+                .pipe(dest('octobercms/themes/withoutorigins-theme/assets/css')),
+            src(inBackendSCSS)
+                .pipe(sourcemaps.init())
+                .pipe(sass())
+                .pipe(concat('style.css'))
+                .pipe(dest('static/backend/css'))
         ]);
     },
 
     'build-js' : function() {
-        return src(inJS)
-            .pipe(concat('script.min.js'))
-            .pipe(dest('static/js'))
-            .pipe(connect.reload());
+        return Promise.all([
+            src(inJS)
+                .pipe(concat('script.js'))
+                .pipe(dest('static/js'))
+                .pipe(connect.reload()),
+            src(inJS)
+                .pipe(concat('script.js'))
+                .pipe(dest('octobercms/themes/withoutorigins-theme/assets/js'))
+                .pipe(connect.reload())
+             ]);
     },
 
     'build-html': function() {

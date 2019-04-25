@@ -1,10 +1,16 @@
 @import './variables.scss';
 
 // --------------------------------------------------- HEADER
-.wysiwyg
+@mixin wysiwyg-class
 {
-    position: relative;
-    padding: 0 distance(2) distance(4);
+    h1, h2, h3, h4, h5, h6 
+    {
+        color: $color-blue-dark;
+        margin-top: distance(2);
+        &:first-child{
+            margin-top: 0;
+        }
+    }
 
     h1
     {
@@ -37,7 +43,7 @@
         color: $color-orange;
         margin-bottom: distance(.5);
         font-weight: normal;
-
+ 
         &:before {
             content: "▶ ";
             font-size: 12px;
@@ -84,17 +90,10 @@
     }
 
     p {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 140%;
         margin-bottom: distance();
-    }
-
-    h1, h2, h3, h4, h5, h6 
-    {
-        margin-top: distance(2);
-        &:first-child{
-            margin-top: 0;
-        }
+        color: $color-blue-dark;
     }
 
     hr {
@@ -108,7 +107,7 @@
 
     ul, ol {
         font-size: 13px;
-        padding-left: distance(2);
+        padding-left: distance(2); 
         margin-bottom: distance();
     }
 
@@ -121,5 +120,14 @@
     img
     {
         margin: distance() distance(2);
+    }
+}
+
+@if $env == 'front' {
+    .wysiwyg
+    {
+        position: relative;
+        padding: 0 distance(2) distance(4);
+        @include wysiwyg-class;
     }
 }

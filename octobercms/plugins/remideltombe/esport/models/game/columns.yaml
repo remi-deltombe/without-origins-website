@@ -8,6 +8,12 @@ columns:
         type: text
         searchable: true
         sortable: true
+    link:
+        label: Link
+        type: partial
+        valueFrom: slug
+        path: ~/plugins/remideltombe/page/partials/_field_link.htm
+
     sort_order:
         label: Order
         type: number

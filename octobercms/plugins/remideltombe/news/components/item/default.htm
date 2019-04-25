@@ -1,0 +1,14 @@
+
+<div class="module module-news">
+    <div class="news-detail">
+        {% set item = newsItem.item() %}
+        {% if item %}
+            {% set og_image = item.social_image | resize(500, 500) %}
+            {{share_as(item.link(), item.social_title, item.social_description, og_image)}}
+            {{describe(item.seo_title, item.seo_description)}}
+            <div class="wysiwyg">
+                {{ item.content | raw }}
+            </div>
+        {% endif %}
+    </div>
+</div>

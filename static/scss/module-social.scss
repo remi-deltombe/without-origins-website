@@ -3,7 +3,8 @@
 // --------------------------------------------------- HEADER
 .module-social
 {
-    padding: distance();
+    padding: distance(.25);
+    font-size: 11px;
 
     .menu-item {
         display: inline-block;
@@ -12,11 +13,11 @@
 
     .icon {
         display: inline-block;
-        width: distance(2);
-        height: distance(2);
+        width: distance(1.75);
+        height: distance(1.75);
         border-radius: 100%;
         text-align: center;
-        line-height: distance(2);
+        line-height: distance(1.75);
         color: $color-white;
         transition: duration();
         transform: scale(1);

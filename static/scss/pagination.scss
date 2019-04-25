@@ -1,0 +1,42 @@
+@import './variables.scss';
+
+.pagination
+{
+    &:after
+    {
+        content:'';
+        display: block;
+        clear: both;
+    }
+}
+
+.pagination-item
+{
+    display: inline-block;
+    height: distance(2);
+    margin-right: distance();
+    text-align: center;
+    line-height: distance(1.8);
+
+    a  
+    {
+        display: block;
+        height: 100%;
+        width: 100%;
+        border: 1px solid $color-grey-light;
+        color: $color-grey;
+        min-width: distance(2);
+        padding: 0 distance(.5);
+        transition: duration();
+
+        &:hover
+        {
+            border-color: $color-orange;
+            color: $color-orange;
+        }
+    }
+
+    &.is-active
+    {
+    }
+}

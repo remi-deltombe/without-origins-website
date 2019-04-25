@@ -11,7 +11,17 @@ permissions:
 navigation:
     esport:
         label: Esport
-        url: remideltombe/esport/games
+        url: remideltombe/esport/results
         icon: icon-gamepad
         permissions:
             - remideltombe.socialnetworks.manage_game
+        sideMenu:
+            side-menu-item:
+                label: Results
+                url: remideltombe/esport/results
+                icon: icon-sitemap
+
+            side-menu-item2:
+                label: Games
+                url: remideltombe/esport/games
+                icon: icon-gamepad

@@ -1,0 +1,19 @@
+<div class="module module-esport">
+    <div class="esport-games">
+        {% for item in __SELF__.games() %}
+            {% if esport_context().id == item.id %}
+                <div class="esport-game is-active">
+                    <div class="esport-image"><img src="{{ item.logo | media | resize(100, 100) }}" alt="{{image_alt}}"></div>
+                    <div class="esport-title">{{ item.acronym }}</div>
+                </div>
+            {% else %}
+                <div class="esport-game">
+                    <a class="esport-link" href="{{item.link()}}">
+                        <div class="esport-image"><img src="{{ item.logo | media | resize(100, 100) }}" alt="{{image_alt}}"></div>
+                        <div class="esport-title">{{ item.acronym }}</div>
+                    </a>
+                </div>
+            {% endif%}
+        {% endfor %}
+    </div>
+</div>

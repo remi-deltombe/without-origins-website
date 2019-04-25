@@ -4,9 +4,17 @@ layout = "default"
 description = "Homepage"
 is_hidden = 0
 
-[newsListing]
+[newsItems]
+count = 4
+is_paginated = 0
+display_categories = false
+[esportResults]
 count = 4
 is_paginated = 0
 ==
-
-{% partial 'frame' title="News" icon="fas fa-rss" component="newsListing" %}
+{% partial 'frame' title="News" icon="fas fa-rss" component="newsItems" %}
+<div class="columns">
+    <div class="column column-6">
+        {% partial 'frame' title="Dernier resultats" icon="fas fa-gamepad" component="esportResults" %}
+    </div>
+</div>

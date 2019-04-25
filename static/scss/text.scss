@@ -1,9 +1,23 @@
 @import './variables.scss';
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,700,900");
 
-html
-{
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 12px;
-    line-height: 16px;
-    color: $color-blue-dark;
+
+@if $env == front {
+    html
+    {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 13px;
+        line-height: 120%;
+        line-height: 16px;
+        color: $color-blue-dark;
+    }
+}
+@else {
+    *
+    {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 12px;
+        line-height: 16px;
+        color: $color-blue-dark;
+    }
 }

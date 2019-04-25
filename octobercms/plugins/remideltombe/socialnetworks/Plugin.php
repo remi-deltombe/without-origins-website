@@ -14,7 +14,7 @@ class Plugin extends PluginBase
                 'icon'        => 'oc-icon-exchange',
                 'class'       => 'RemiDeltombe\SocialNetworks\Models\Settings',
                 'order'       => 500,
-                'keywords'    => 'security location',
+                'category'    => 'Content',
                 'permissions' => ['remideltombe.socialnetworks.manage']
             ]
         ];

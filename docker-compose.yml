@@ -30,3 +30,4 @@ services:
       - DB_DATABASE=octobercms
       - DB_USERNAME=root
       - DB_PASSWORD=root
+      - APP_DEBUG=true

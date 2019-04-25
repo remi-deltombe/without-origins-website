@@ -1,6 +1,7 @@
 <?php namespace RemiDeltombe\Page\Components;
 
 use RemiDeltombe\Page\Models\Page;
+use RemiDeltombe\Esport\Models\Game;
 
 class Detail extends \Cms\Classes\ComponentBase
 {
@@ -15,13 +16,13 @@ class Detail extends \Cms\Classes\ComponentBase
                  'validationPattern' => '^[0-9]+$',
                  'validationMessage' => 'Id must be a number'
             ],
-            'url' => [
-                 'title'             => 'Url of the page',
-                 'description'       => 'The url of the page to display',
+            'slug' => [
+                 'title'             => 'Slug of the page',
+                 'description'       => 'The slug of the page to display',
                  'default'           => '',
                  'type'              => 'string',
                  'validationPattern' => '^/[^\/]{1,}',
-                 'validationMessage' => 'Url must be valid'
+                 'validationMessage' => 'Slug must be valid'
             ]
         ];
     }
@@ -34,12 +35,21 @@ class Detail extends \Cms\Classes\ComponentBase
         ];
     }
 
-    public function page()
+    public function item()
     {
-        if(strlen($this->property('url')))
+        if(strlen($this->property('slug')))
         {
-            return Page::where('url', '/'.$this->property('url'))->first();
+            $page = Page::where('game_id', Game::contextId())
+                        ->where('slug', $this->property('slug'))
+                        ->first();
         }
-        return Page::find($this->property('id'));
+        else
+        {
+            $page = Page::find($this->property('id'));
+        }
+        if($page && $page->is_active)
+        {
+            return $page;
+        }
     }
 }

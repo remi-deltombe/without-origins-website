@@ -4,6 +4,20 @@ fields:
         span: auto
         required: 1
         type: text
+    acronym:
+        label: Acronym
+        span: auto
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        required: 1
+        dependsOn: {  }
+        preset:
+            field: name
+            type: slug
+        type: text
     menu:
         label: Menu
         nameFrom: name
@@ -11,3 +25,29 @@ fields:
         emptyOption: None
         span: auto
         type: relation
+    background:
+        label: Background
+        mode: image
+        span: auto
+        type: mediafinder
+    logo:
+        label: Logo
+        span: auto
+        mode: image
+        type: mediafinder
+    races:
+        label: Races/Champions
+        prompt: 'Add new item'
+        span: full
+        type: repeater
+        form:
+            fields:
+                name:
+                    label: Name
+                    span: auto
+                    type: text
+                image:
+                    label: Image
+                    mode: file
+                    span: auto
+                    type: mediafinder

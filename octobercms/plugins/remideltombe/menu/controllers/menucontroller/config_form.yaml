@@ -1,0 +1,10 @@
+name: MenuController
+form: $/remideltombe/menu/models/menu/fields.yaml
+modelClass: remideltombe\Menu\Models\Menu
+defaultRedirect: remideltombe/menu/menucontroller
+create:
+    redirect: 'remideltombe/menu/menucontroller/update/:id'
+    redirectClose: remideltombe/menu/menucontroller
+update:
+    redirect: remideltombe/menu/menucontroller
+    redirectClose: remideltombe/menu/menucontroller

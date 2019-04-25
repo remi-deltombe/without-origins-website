@@ -1,0 +1,9 @@
+fields:
+    default_menu:
+        label: 'Default menu'
+        span: auto
+        type: number
+    result_detail_slug:
+        label: 'Result detail page slug'
+        span: auto
+        type: text

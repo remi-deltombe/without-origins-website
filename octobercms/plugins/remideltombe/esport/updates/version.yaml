@@ -6,3 +6,12 @@
 1.0.3:
     - 'Updated table remideltombe_esport_game'
     - builder_table_update_remideltombe_esport_game.php
+1.0.4:
+    - 'Updated table remideltombe_esport_game'
+    - builder_table_update_remideltombe_esport_game_2.php
+1.0.5:
+    - 'Created table remideltombe_esport_result'
+    - builder_table_create_remideltombe_esport_result.php
+1.0.6:
+    - 'Updated table remideltombe_esport_game'
+    - builder_table_update_remideltombe_esport_game_3.php

@@ -15,7 +15,7 @@ class BuilderTableCreateRemideltombePagePage extends Migration
             $table->integer('game_id')->nullable();
 
             $table->string('title', 256);
-            $table->string('url', 256);
+            $table->string('slug', 256);
             $table->boolean('is_active')->default(1);
 
             $table->string('image', 256);

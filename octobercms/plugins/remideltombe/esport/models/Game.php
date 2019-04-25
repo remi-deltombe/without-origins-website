@@ -16,7 +16,6 @@ class Game extends Model
      */
     public $timestamps = false;
 
-
     /**
      * @var string The database table used by the model.
      */
@@ -31,4 +30,32 @@ class Game extends Model
     public $belongsTo = [
         'menu' => ['RemiDeltombe\Menu\Models\Menu'],
     ];
+
+    protected $jsonable = ['races'];
+
+    public function link()
+    {
+        return '/' . $this->slug.'/';
+    }
+
+    /**
+     * Current game context
+     */
+    private static $context = null;
+
+    public static function setContext(Game $game)
+    {
+        static::$context = $game;
+    }
+
+    public static function context()
+    {
+        return static::$context;
+    }
+
+    public static function contextId()
+    {
+        return static::$context ? static::$context->id : null;
+    }
+
 }

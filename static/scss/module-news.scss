@@ -1,7 +1,7 @@
 @import './variables.scss';
 @import './module-social.scss';
 
-// --------------------------------------------------- HEADER
+// --------------------------------------------------- LISTING
 .news-listing
 {
     overflow: hidden;
@@ -172,6 +172,52 @@
                     display: none;
                 }
             }
+        }
+    }
+}
+
+// --------------------------------------------------- PAGINATION
+.news-pagination
+{
+    padding: distance();
+
+    .pagination
+    {
+        padding-top: distance();
+        border-top: 1px solid $color-white-dark;
+        text-align: center;
+    }
+}
+
+
+// --------------------------------------------------- PAGINATION
+.news-categories
+{
+    padding: distance();
+
+    .pagination
+    {
+        padding-bottom: distance();
+        border-bottom: 1px solid $color-white-dark;
+    
+        .pagination-item a
+        {
+            background: $color-grey-light;
+            color: $color-blue-dark;
+
+            &:hover
+            {
+                background: $color-orange;
+                color: $color-white;
+            }
+        }
+
+        .is-active
+        {
+            background: $color-orange;
+            color: $color-white;
+            padding: 0 distance(.5);
+            border: 0;
         }
     }
 }

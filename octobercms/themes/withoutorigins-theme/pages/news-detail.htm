@@ -1,17 +1,11 @@
 title = "News detail"
-url = "/news/:url"
+url = "/news/:slug"
 layout = "default"
 is_hidden = 0
 
-[newsDetail]
-url = "{{ :url }}"
+[newsItem]
+slug = "{{ :slug }}"
 ==
 
-<div class="module module-news">
-    <div class="news-detail">
-        {% set item = newsDetail.item() %}
-        {% if item %}
-            {% partial 'frame' title="News" icon="fas fa-rss" image=item.image content_wysiwyg=item.content %}
-        {% endif %}
-    </div>
-</div>
+{% set item = newsItem.item() %}
+{% partial 'frame' title="News" image=item.image icon="fas fa-rss" component="newsItem" %}

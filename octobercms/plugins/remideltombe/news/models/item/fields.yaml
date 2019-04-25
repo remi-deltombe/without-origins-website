@@ -4,14 +4,14 @@ fields:
         span: auto
         required: 1
         type: text
-    url:
-        label: Url
+    slug:
+        label: Slug
         span: auto
         required: 1
         dependsOn: {  }
         preset:
             field: title
-            type: url
+            type: slug
         type: text
     game:
         label: Game

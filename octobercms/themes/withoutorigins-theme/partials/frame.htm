@@ -7,7 +7,6 @@ component=false
 content=false
 content_raw=false
 content_wysiwyg=false
-module=false
 ==
 
 <div class="frame">
@@ -24,7 +23,7 @@ module=false
 
     {% if image %}
     <div class="frame-image">
-         <img src="{{ image | media | resize(748) }}" alt="{{image_alt}}">
+         <img src="{{ image | media | resize(854, 250, { mode : 'crop' }) }}" alt="{{image_alt}}">
     </div>
     {% endif %}
     

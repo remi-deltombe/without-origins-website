@@ -15,55 +15,173 @@ html, body
 // --------------------------------------------------- HEADER
 .header
 {
-    position: relative;
+    position: fixed;
     z-index: 1;
-    border-bottom: 3px solid $color-orange;
-    background: $color-white;
-    
-    &:after
-    {
-        content:'';
-        display: block;
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        right:80%;
-        height: 3px;
-        background: $color-blue-dark; 
-    }
-
-    .logo
-    { 
-        width: 100%;
-        height: distance(3);
-        text-align: center;
-        margin-top: distance(.25);
-        margin-left: distance(1.5);
-
-        @media screen and (min-width: 640px) {
-            float: left;
-            width: auto;
-        }
-
-        @media screen and (max-width: 640px) {
-            padding: distance() 0;
-            margin:  0;
-            height: distance(5);
-        }
-    }
-
-    .module-social
-    {
-        float:right;
-    }
+    top: 0;
+    width: 100%;
 }
 
     .header-content
     {
+        position: relative;
         margin: 0 auto;
         max-width: $site-width;
+        height: 100%;
         width: 100%;
     }
+
+    .header-first
+    {
+        background: $color-white;
+        transition: duration();
+        height: distance(2.5);
+
+        .module-social
+        {
+            position: absolute;
+            right: distance();
+            top: 0;
+            transition: duration();
+        }
+    }
+
+    .header-second
+    {
+        background: $color-white-dark;
+        height: distance(6);
+        transition: duration();
+        position: relative;
+        z-index: -1;
+        clear: both;
+
+        &:after,
+        &:before
+        {
+            content:'';
+            display: block;
+            position: absolute;
+            height: 3px;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            background: $color-orange;
+        }
+
+        &:after
+        {
+            left:20%;
+            background: $color-blue-dark;
+        }
+
+        .logo
+        {
+            height:100%;
+            float: left; 
+            padding: distance(1.5) 0 distance(1.5) distance(2);
+            margin-right: distance(3);
+            transition: duration();
+            a
+            {
+                height: 100%;
+                display: block;
+            }
+            img
+            {
+                width: auto;
+                height: 100%;
+            }
+        }
+    }
+
+    .header-third
+    {
+        height: distance(2.5);
+        transition: duration();
+        clear: both;
+
+
+        .header-title
+        {
+            z-index: 1;
+            position: relative;
+            float: left;
+            font-size: 14px;
+            background: $color-orange;
+            line-height: distance(2.5);
+            padding-right: distance();
+            color: $color-white;
+            margin-right: distance(4);
+            transition: duration();
+            padding-left:  distance(2);
+
+            &:before 
+            {
+                content:'';
+                display: block;
+                position: absolute;
+                right: 100%;
+                left:-100000px;
+                background: $color-orange;
+                top:0;
+                bottom: 0;  
+            }
+
+            &:after 
+            {
+                content:"";
+                display: block;
+                position: absolute;
+                left: 100%;
+                bottom: 0;
+                height: 0;
+                width: 0;
+                border: distance(1.25) solid transparent;
+                border-top-color: $color-orange;
+                border-left-color: $color-orange;
+                border-left-width: distance();
+                border-right-width: distance();
+                transition: duration();
+            }
+        }
+    }
+
+.header.is-small
+{
+    .header-first
+    { 
+        height: distance(2); 
+
+        .module-social
+        {
+            top: -3px;
+            transform: scale(0.8);
+        }
+    }
+
+    .header-second
+    {
+        height: distance(3); 
+
+        .logo
+        {
+            padding: distance(.5) 0;
+        }
+    }
+
+    .header-third
+    {
+        .header-title
+        {
+            line-height: distance(2); 
+
+            &:after 
+            {
+                border-width: distance();
+            }
+        }
+    }
+
+}
 
 // --------------------------------------------------- BODY
 .body
@@ -72,9 +190,9 @@ html, body
     padding: distance(4) 0 distance(2);
     z-index: 0;
     min-height: 100%;
-    padding-top: distance(8);
+    padding-top: distance(11+8);
     padding-bottom: distance(8);
-    margin-top: distance(-6) - 3px;
+    margin-top: distance(-5.5) - 3px; 
     margin-bottom: distance(-6);
 }
     .body-background
@@ -89,6 +207,7 @@ html, body
 
         img {
             display: block;
+            min-width: 100%;
         }
     }
 
@@ -112,7 +231,8 @@ html, body
         padding: 0 distance();
         line-height: distance(2);
         font-size: 15px;
-        font-style: italic;
+        font-family: 'Roboto Condensed';
+        text-transform: uppercase;
         background: $color-blue-dark;
         color: $color-white;
 
@@ -152,6 +272,7 @@ html, body
     .frame-image
     {
         box-shadow: 0 0 20px darken($color-blue-dark, 1.2);
+        clear: both;
         img 
         {
             display: block;
@@ -205,6 +326,20 @@ html, body
         width: 100%;
     }
 
+// --------------------------------------------------- BUTTONS
+.button
+{
+    display: inline-block;
+    background: $color-orange;
+    padding: distance(.5);
+    color: $color-white;
+    transition: duration();
+    
+    &:hover
+    {
+        background: $color-orange-light;
+    }
+}
 
 
 // --------------------------------------------------- IMAGES

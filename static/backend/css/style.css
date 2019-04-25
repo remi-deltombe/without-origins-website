@@ -1,0 +1,99 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,700,900");
+* {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: #002350; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #002350;
+  margin-top: 24px; }
+  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    margin-top: 0; }
+
+h1 {
+  position: relative;
+  font-size: 40px;
+  line-height: 140%;
+  margin-bottom: 24px;
+  padding-top: 24px;
+  padding-bottom: 12px;
+  font-weight: normal;
+  border-bottom: 1px solid #f57700; }
+  h1:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 70%;
+    height: 1px;
+    background: #002350; }
+
+h2 {
+  font-size: 32px;
+  line-height: 140%;
+  color: #f57700;
+  margin-bottom: 6px;
+  font-weight: normal; }
+  h2:before {
+    content: "▶ ";
+    font-size: 12px;
+    position: relative;
+    top: -6px;
+    margin-right: 6px; }
+
+h3 {
+  font-size: 24px;
+  line-height: 140%;
+  color: #549eff;
+  margin-bottom: 2.4px;
+  font-weight: normal; }
+
+h4 {
+  font-size: 20px;
+  line-height: 140%;
+  color: #002350;
+  margin-bottom: 2.4px;
+  font-weight: normal; }
+
+h5 {
+  font-size: 18px;
+  line-height: 140%;
+  color: #893100;
+  margin-bottom: 2.4px;
+  font-weight: normal; }
+
+h6 {
+  font-size: 16px;
+  line-height: 140%;
+  color: #858585;
+  margin-bottom: 2.4px;
+  font-weight: normal; }
+
+p {
+  font-size: 14px;
+  line-height: 140%;
+  margin-bottom: 12px;
+  color: #002350; }
+
+hr {
+  position: relative;
+  display: block;
+  background: #f57700;
+  height: 1px;
+  border-left: 120px solid #002350;
+  margin-bottom: 12px; }
+
+ul, ol {
+  font-size: 13px;
+  padding-left: 24px;
+  margin-bottom: 12px; }
+
+a {
+  text-decoration: underline;
+  color: #549eff; }
+
+img {
+  margin: 12px 24px; }

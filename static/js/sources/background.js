@@ -13,21 +13,12 @@ class Background
 
     update()
     {
-        /*
-        if(!this._timeout)
-        {
-            this._timeout = setTimeout(()=>{
-                this.setPosition(this.computePosition()/1.5)
-                this._timeout = null;
-            }, 1);
-        }
-        */
-        this.setPosition(-this.computePosition()/4)
+        this.setPosition(this.computePosition())
     }
 
     computePosition()
     {
-        return window.scrollY;
+        return -window.scrollY/4;
     }
 
     setPosition(position)
