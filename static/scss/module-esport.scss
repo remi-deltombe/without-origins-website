@@ -157,7 +157,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        height: distance(3) - 3px;
+        min-height: distance(3) - 3px;
 
         .team
         {
@@ -168,7 +168,7 @@
             padding-left: calc(10% + 36px);
             padding-right: distance(6);
             line-height: distance(2.8);
-            height: distance(3);
+            min-height: distance(3);
 
 
             &:before
@@ -192,6 +192,7 @@
                 border-bottom-color: $color-white;
                 border-left-color: $color-white;
                 top: 3px;
+                height: 100%;
             }
 
             &~.team
@@ -235,14 +236,13 @@
                 width: distance(2);
                 height: distance(2);
                 background: $color-white;
-                top:50%;
-                margin-top: distance(-1);
                 border-radius: 100%;
                 text-align: center;
                 line-height: distance(2);
                 font-weight: bold;
                 font-size: 18px;
                 right: distance(3);
+                top: distance(.5);
             }
         }
 
@@ -427,6 +427,8 @@
         {
             color: $color-grey-dark;
             background: $color-grey-light;
+            line-height: 120%;
+            padding: distance(.5);
         }
 
         td
@@ -646,14 +648,22 @@
 // --------------------------------------------------- Result
 .result-listing
 {
+    &:after
+    {
+        content:'';
+        display: block;
+        clear: both;
+    }
+
     .result-item
     {
-        margin: 0 distance();
+        float: left;
+        width:50%;
         line-height: distance(1.5);
-        padding: distance() 0;
-        transform: scale(1);
+        padding: 14px distance(2);
+        border-bottom: 1px solid $color-white-dark;
+        background: $color-white;
         transition: duration();
-        clear: left;
 
         &:after
         {
@@ -662,14 +672,20 @@
             clear: both; 
         }
 
-        &:nth-child(n+2)
+        
+        .result-link
         {
-            border-top: 1px solid $color-grey-light;
+            display: block;
+        transform: scale(1);
+        transition: duration();
         }
 
-        &:hover
-        {
-            transform: scale(1.05);
+        &:hover {
+            background: rgba($color-white-dark, .5);
+            .result-link
+            {
+                transform: scale(1.05);
+            }
         }
     }
 
@@ -705,6 +721,24 @@
         font-size: 16px; 
     }
  
-    .winner-1 .score { color: $color-green; }
-    .winner-2 .score { color: $color-red; }
+    .is-winned .score { color: $color-green; }
+    .is-loosed .score { color: $color-red; }
 }
+
+.column-6 .result-item
+{
+    width: 100%;
+    clear: left;
+}
+
+// --------------------------------------------------- PAGINATION
+.result-pagination
+{
+    padding: distance();
+
+    .pagination
+    {
+        text-align: center;
+    }
+}
+

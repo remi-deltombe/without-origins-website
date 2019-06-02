@@ -1,0 +1,127 @@
+@import './variables.scss';
+
+// --------------------------------------------------- LISTING
+.calendar
+{
+    width: 100%;
+    border-spacing : 0;
+    border-collapse : collapse; 
+
+    td
+    {
+        vertical-align: top;
+        border:1px solid $color-white-dark;
+    }
+ 
+    th
+    {
+        line-height: distance(2);
+        border:1px solid $color-white-dark;
+        color: $color-white;
+        background: $color-grey-light;
+
+        text-transform: uppercase;
+        font-family: 'Roboto Condensed';
+    }
+
+    .events-listing .events-social
+    {
+        bottom: distance();
+    }
+}
+
+    .calendar-empty
+    {
+        background: $color-white-dark;
+    }
+
+    .calendar-day
+    {
+        position: relative;
+        min-height: distance(10);
+        padding: distance();
+    }
+
+    .calendar-day-number
+    {
+        position: absolute;
+        top: 0;
+        left: distance();
+        font-size: distance(3);
+        line-height: distance(4);
+        color: $color-white-dark;
+    }
+
+    .calendar-item
+    {
+        position: relative;
+        margin-bottom: distance();
+
+        &:hover
+        {
+            .calendar-item-detail
+            {
+                display: block;
+            }
+        }
+    }
+
+    .calendar-item-miniature
+    {
+        padding: distance(.5);
+        background: $color-grey-light;
+        border-radius: 3px;
+        color: $color-white;
+    }
+
+    .calendar-item-detail
+    {
+        display: none;
+        position: absolute;
+        top:100%;
+        left: 0;
+        z-index: 1;
+        width: distance(35);
+    }
+
+
+.events-calendar-header
+{
+    text-align: center;
+    margin-bottom: distance();
+
+    .prev, .next
+    {
+        font-family: 'Titillium Web', sans-serif;
+
+        width: distance(2);
+        height: distance(2);
+        text-align: center;
+        line-height: distance(1.9);
+        border:1px solid $color-grey;
+        color: $color-grey;
+        display: block;
+        transition: duration();
+
+        &:hover
+        {
+            color: $color-blue-dark;
+            border-color: $color-blue-dark;
+        }
+    }
+
+    .prev
+    {
+        float: left;
+    }
+    .next
+    {
+        float: right;
+    }
+
+    .month, .year
+    {
+        font-size: distance(2);
+        color: $color-grey-dark;
+    }
+}

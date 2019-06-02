@@ -23,10 +23,20 @@ fields:
         context:
             - create
         type: relation
+    our_team:
+        label: 'Our team'
+        options:
+            1: 'Team A'
+            2: 'Team B'
+        emptyOption: None
+        showSearch: true
+        span: auto
+        default: '1'
+        type: dropdown
     is_active:
         label: Active
         span: auto
-        type: checkbox
+        type: switch
 tabs:
     fields:
         image:
@@ -122,7 +132,7 @@ tabs:
             span: auto
             type: mediafinder
             tab: Teams
-            default: '/logo/withoutorigins.png'
+            default: /icone.png
         team_b_logo:
             label: Logo
             mode: file
@@ -144,11 +154,11 @@ tabs:
             label: Matches
             prompt: 'Add new match'
             span: full
-            type: repeater
-            tab: Matches
             context:
                 - update
                 - preview
+            type: repeater
+            tab: Matches
             form:
                 fields:
                     winner:
@@ -160,9 +170,8 @@ tabs:
                         type: balloon-selector
                     replay:
                         label: Replay
-                        mode: file
                         span: auto
-                        type: mediafinder
+                        type: fileupload
                     description:
                         label: Description
                         size: ''

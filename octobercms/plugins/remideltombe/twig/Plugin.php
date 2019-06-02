@@ -31,6 +31,7 @@ class Plugin extends PluginBase
                 {
                     $meta  ='<title>'.Plugin::$meta_title.'</title>'."\n";
                     $meta .='<meta name="description" content="'.Plugin::$meta_desc.'" />'."\n";
+                    $meta .='<meta property="og:type" content="article"/>'."\n";
                     $meta .='<meta property="og:title" content="'.Plugin::$og_title.'" />'."\n";
                     $meta .='<meta property="og:description" content="'.Plugin::$og_desc.'" />'."\n";
                     $meta .='<meta property="og:url" content="'.Plugin::$og_url.'" />'."\n";

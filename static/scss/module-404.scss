@@ -1,0 +1,23 @@
+@import './variables.scss';
+
+// --------------------------------------------------- LISTING
+.module-404
+{
+    text-align: center;
+    padding: distance(10) 0;
+
+    .title {
+        color: $color-grey-lighten;
+        font-size: distance(10);
+        line-height: distance(10);
+        font-weight: bold;
+        margin-bottom: distance();
+    }
+
+    .desc {
+        color: $color-grey;
+        font-size: distance(1.5);
+        line-height: distance(1.5);
+    }
+
+}

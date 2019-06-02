@@ -6,4 +6,7 @@ is_hidden = 0
 [pageDetail]
 slug = "{{ :slug }}"
 ==
-{% partial 'frame' component="pageDetail" %}
+
+
+{% set item = pageDetail.item() %}
+{% partial 'frame' image=item.image icon="fas fa-rss" component="pageDetail" %}

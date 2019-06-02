@@ -4,7 +4,7 @@
         <div class="news-categories">
             <div class="pagination">
                 {% if input('category') %}
-                    <div class="pagination-item"><a href="{{ current_url([],['category', 'page']) }}">Toute</a></div>
+                    <div class="pagination-item"><a href="{{ current_url([],['category', 'page']) }}">Toutes</a></div>
                 {% endif %}
                 {% for category in __SELF__.categories() %}
                     {% if category.name == input('category') %}
@@ -18,41 +18,47 @@
     {% endif %}
 
     <div class="news-listing">
-        {% for item in items %}
-            <div class="news-item">
-                <a class="news-link" href="{{item.link()}}">
-                    <div class="news-image">
-                         <img src="{{ item.thumb | media | resize(200, 200, { mode : 'crop' })}}" alt="News" width=200 height=200>
-                    </div>
-                    <div class="news-title">{{ item.title }}</div>
-                    {% if item.publication_date or item.publication_author %}
-                        <div class="news-author"> 
+        {% if items | length %}
+            {% for item in items %}
+                <div class="news-item">
+                    <a class="news-link" href="{{item.link()}}">
+                        <div class="news-image">
+                             <img src="{{ item.thumb | media | resize(200, 200, { mode : 'crop' })}}" alt="News" width=200 height=200>
+                        </div>
+                        <div class="news-title">{{ item.title }}</div>
+                        {% if item.publication_date or item.publication_author %}
+                            <div class="news-author"> 
 
-                            {% if item.publication_date %}
-                            le {{item.publication_date|date("d/m")}} 
-                            {% endif  %}
-                            {% if item.publication_author %}
-                            par {{item.publication_author}}
-                            {% endif  %}
+                                {% if item.publication_date %}
+                                le {{item.publication_date|date("d/m")}} 
+                                {% endif  %}
+                                {% if item.publication_author %}
+                                par {{item.publication_author}}
+                                {% endif  %}
+                            </div>
+                        {% endif  %}
+                        <div class="news-content"> {{ item.description | striptags |slice(0, 120) }} </div>
+                        <div class="news-more">
+                            read more >
                         </div>
-                    {% endif  %}
-                    <div class="news-content"> {{ item.description | striptags |slice(0, 120) }} </div>
-                    <div class="news-more">
-                        read more >
-                    </div>
-                </a>
-                <div class="news-social">
-                    <div class="menu">
-                        <div class="menu-item">
-                            <div class="menu-item-icon"><a target="share" href="https://www.facebook.com/sharer/sharer.php?u={{url(item.link())}}"><span class="icon icon-facebook"><i class="fab fa-facebook-f"></i></span></a></div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-icon"><a target="share" href="https://twitter.com/home?status={{item.social_description}}"><span class="icon icon-twitter"><i class="fab fa-twitter"></i></span></a></div>
+                    </a>
+                    <div class="news-social">
+                        <div class="menu">
+                            <div class="menu-item">
+                                <div class="menu-item-icon"><a target="share" href="https://www.facebook.com/sharer/sharer.php?u={{url(item.link())}}"><span class="icon icon-facebook"><i class="fab fa-facebook-f"></i></span></a></div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-icon"><a target="share" href="https://twitter.com/home?status={{item.social_description}}"><span class="icon icon-twitter"><i class="fab fa-twitter"></i></span></a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+        <div class="no-result">
+            Aucune news pour le moment
+        </div>
+        {% endif %}
     </div>
     {% if __SELF__.property('is_paginated') and items.lastPage > 1 %}
         <div class="news-pagination">

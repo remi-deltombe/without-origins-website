@@ -3,7 +3,7 @@
         <div class="wysiwyg">
             {% set item = __SELF__.item() %}
             {% if item %}
-                {{ item.content | raw }}
+                {{ item.content | album | raw }}
             {% endif %}
         </div>
     </div>

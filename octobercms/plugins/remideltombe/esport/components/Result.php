@@ -38,9 +38,18 @@ class Result extends \Cms\Classes\ComponentBase
     {
         if(strlen($this->property('slug')))
         {
-            return ResultModel::where('slug', $this->property('slug'))->first();
+            $item = ResultModel::where('slug', $this->property('slug'))->first();
         }
-        return ResultModel::find($this->property('id'));
+        else
+        {
+            $item = ResultModel::find($this->property('id'));
+        }
+        if($item)
+        {
+            return $item;
+        }
+        header('Location: /404');
+        die;
     }
 
     public function raceImage($item, $id)

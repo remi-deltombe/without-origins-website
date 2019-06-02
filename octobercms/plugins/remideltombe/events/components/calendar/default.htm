@@ -1,0 +1,114 @@
+{% set time = "now"|date("U") %}
+<div class="events-calendar">
+
+    <div class="events-categories">
+        <div class="pagination">
+            {% if input('category') %}
+                <div class="pagination-item"><a href="{{ current_url([],['category', 'page']) }}">Toutes</a></div>
+            {% endif %}
+            {% for category in __SELF__.categories() %}
+                {% if category.name == input('category') %}
+                    <div class="pagination-item is-active">
+                        <div class="pin" style="background-color:{{category.color}}"></div>
+                        {{ category.name }}
+                    </div>
+                {% else %}
+                    <div class="pagination-item
+                    {% if input('category')%}
+                    is-disable
+                    {% endif %}
+                    "><a href="{{ current_url({category:category.name},['page']) }}">
+                        <span class="pin" style="background-color:{{category.color}}"></span>
+                        {{ category.name }}
+                    </a></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="events-calendar-header">
+        <a class="prev" href="{{ __SELF__.previousMonth() }}">&larr;</a>
+        <span class="month">{{__SELF__.month()}}</span>
+        <span class="year">{{__SELF__.year()}}</span>
+        <a class="next" href="{{ __SELF__.nextMonth() }}">&rarr;</a>
+    </div>
+    <table class="calendar">
+        <thead>
+            <tr>
+                <th width="14%">Lundi</th>
+                <th width="14%">Mardi</th>
+                <th width="14%">Mercredi</th>
+                <th width="14%">Jeudi</th>
+                <th width="14%">Vendredi</th>
+                <th width="14%">Samedi</th>
+                <th width="14%">Dimanche</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {% set daysInMonth = time|date('t') %}
+            {% set startDow = time|date('F 1\\s\\t Y')|date('N') - 1 %}
+            {% set dow = startDow %}
+            {% for day in range(1,daysInMonth) %}
+                {% if loop.first and startDow != 0 %}
+                    <td class="calendar-empty" colspan="{{ startDow }}"></td>
+                {% endif %}
+                <td>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">{{ day }}</div>
+                        <div class="calendar-day-content">
+                            {% for event in __SELF__.events(day) %}
+                                <div class="calendar-item">
+                                    <div class="calendar-item-miniature"
+                                    {% if event.category %}
+                                    style="background-color: {{event.category.color}};"
+                                    {% endif %}
+                                    >
+                                        <a class="events-link" href="{{event.link()}}">
+                                            {{event.title}}
+                                        </a>
+                                    </div>
+                                    <div class="calendar-item-detail events-listing">
+                                        <a class="events-link" href="{{event.link()}}">
+                                            <div class="events-image">
+                                                 <img src="{{ event.thumb | media | resize(200, 200, { mode : 'crop' })}}" alt="Events" width=200 height=200>
+                                            </div>
+                                            <div class="events-title">{{ event.title }}</div>
+                                            {% if event.date %}
+                                                <div class="events-author"> 
+                                                    le {{event.date|date("d/m/Y à H:m")}} 
+                                                </div>
+                                            {% endif  %}
+                                            <div class="events-content"> {{ event.description | striptags |slice(0, 120) }} </div>
+                                        </a>
+                                        <div class="events-social">
+                                            <div class="menu">
+                                                <div class="menu-item">
+                                                    <div class="menu-item-icon"><a target="share" href="https://www.facebook.com/sharer/sharer.php?u={{url(event.link())}}"><span class="icon icon-facebook"><i class="fab fa-facebook-f"></i></span></a></div>
+                                                </div>
+                                                <div class="menu-item">
+                                                    <div class="menu-item-icon"><a target="share" href="https://twitter.com/home?status={{event.social_description}}"><span class="icon icon-twitter"><i class="fab fa-twitter"></i></span></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </td>
+                {% if loop.last and dow != 6 %}
+                    <td class="calendar-empty" colspan="{{ 6 - dow }}">&nbsp;</td>
+                {% endif %}
+                {% if dow == 6 %}
+                    {% set dow = 0 %}
+                </tr>
+                <tr>
+                {% else %}
+                    {% set dow = dow + 1 %}
+                {% endif %}
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>

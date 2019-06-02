@@ -2,7 +2,7 @@
 
 html
 {
-    background: $color-white-dark;
+    background: #eaeaea;
     width: 100%;
     overflow-x: hidden;
 }
@@ -17,7 +17,7 @@ html, body
 {
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 0; 
     width: 100%;
 }
 
@@ -195,6 +195,7 @@ html, body
     margin-top: distance(-5.5) - 3px; 
     margin-bottom: distance(-6);
 }
+
     .body-background
     {
         display: block;
@@ -222,6 +223,20 @@ html, body
     .frame 
     {
         padding: distance(1.5);
+
+        &.is-transparent
+        {
+            .frame-content
+            {
+                background: transparent;
+                border-bottom: 0; 
+                box-shadow: none;
+
+                &:after {
+                    display: none;
+                }
+            }
+        }
     }
 
     .frame-title
@@ -276,7 +291,7 @@ html, body
         img 
         {
             display: block;
-        }
+        }   
     }
 
     .frame-content
@@ -348,4 +363,9 @@ img {
     height: auto;
     max-width: 100%;
     max-height: 100%;
+}
+
+// --------------------------------------------------- COMMON
+.no-result{
+    padding: distance();
 }

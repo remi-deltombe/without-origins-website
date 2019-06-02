@@ -1,0 +1,10 @@
+fields:
+    name:
+        label: Name
+        span: left
+        required: 1
+        type: text
+    color:
+        label: Color
+        span: auto
+        type: colorpicker

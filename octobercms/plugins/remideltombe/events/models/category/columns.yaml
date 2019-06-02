@@ -1,0 +1,8 @@
+columns:
+    id:
+        label: ID
+        type: number
+        width: '120'
+    name:
+        label: Name
+        type: text

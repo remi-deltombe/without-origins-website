@@ -1,0 +1,328 @@
+@import './variables.scss';
+@import './module-social.scss';
+@import './module-esport.scss';
+
+// --------------------------------------------------- LISTING
+.events-listing
+{
+    overflow: hidden;
+    padding: distance(.5);
+
+    &:after
+    {
+        content:'';
+        display: block;
+        clear: both;
+    }
+    a:after
+    {
+        content:'';
+        display: block;
+        clear: both;
+    }
+
+    .events-item
+    {
+        display: block;
+        position: relative;
+        padding: distance(.5);
+
+        &:after
+        {
+            content:'';
+            display: block;
+            clear: both;
+        }
+
+        &:nth-of-type(n+2)
+        {
+            position: relative;
+            margin-top: distance(.5);
+            padding-top: distance();
+
+            &:before
+            {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                height: 1px;
+                left: distance(.5);
+                right: distance(1);
+                background: $color-grey-light;
+            }
+        }
+
+        &:nth-of-type(odd)
+        {
+            clear: both;
+        }
+    }
+
+    .events-link
+    {
+        background: #fff;
+        display: block;
+        padding-right: distance();
+
+        &:hover 
+        {
+            .events-more { color: $color-orange; }
+            .events-image {
+                img { opacity: 0.3; }
+                &:after
+                {
+                    background-color: rgba($color-white, 1);
+                    transform: rotate(90deg);
+                }
+                &:before
+                {
+                    background-color: rgba($color-white, 1);
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    .events-image
+    {
+        float: left; 
+        margin-right: distance();
+        background: $color-blue-dark;
+        position: relative;
+
+        img {
+            display: block;
+            height: distance(12);
+            height: distance(12);
+            transition: duration();
+        }
+
+        &:before, &:after
+        {
+            content: '';
+            z-index: 1;
+            display: block;
+            position: absolute;
+            width: distance(2);
+            height: 2px;
+            background-color: rgba($color-white, 0);
+            top:50%;
+            left:50%;
+            margin-left: distance(-1);
+            margin-top: -1px;
+            transform: rotate(0deg);
+            transition: duration();
+        }
+
+        &:before{
+            transform: rotate(90deg);
+        }
+    }
+
+    .events-title
+    {
+        padding-top: distance();
+        font-size: 18px;
+    }
+
+    .events-author
+    {
+        margin-bottom: distance(.5);
+        color: $color-orange;
+    }
+
+    .events-more
+    {
+        font-weight: bold;
+        transition: duration();
+        margin-top: distance(.5);
+    }
+
+    .events-content,
+    .events-more
+    {
+        padding-left: distance(13);
+    }
+
+    .events-social { 
+        @extend .module-social;
+
+        position: absolute;
+        bottom: 0;
+        right: distance(); 
+        padding: distance(.5);
+
+        .icon {
+            line-height: distance(1.8);
+            width: distance(1.7);
+            height: distance(1.7);
+        }
+    }
+
+    @media screen and (min-width: 1024px){
+        .events-item
+        {
+            display: block;
+            position: relative;
+            float:left;
+            width: 50%;
+
+            &:nth-of-type(2)
+            {
+                margin-top: 0;
+                padding-top: distance(.5);
+
+                &:before
+                {
+                    content: '';
+                    display: none;
+                }
+            }
+        }
+    }
+} 
+
+// --------------------------------------------------- PAGINATION
+.events-pagination
+{
+    padding: distance();
+
+    .pagination
+    {
+        padding-top: distance();
+        border-top: 1px solid $color-white-dark;
+        text-align: center;
+    }
+}
+
+
+// --------------------------------------------------- PAGINATION
+.events-categories
+{
+    padding: distance() 0;
+
+    .pagination
+    { 
+        padding-bottom: distance();
+        border-bottom: 1px solid $color-white-dark;
+        
+        &, a
+        {
+          color: $color-grey-dark;
+        }
+
+        .pin
+        {
+            position: relative;
+            top:distance(.7);
+            width:distance(.5);
+            height:distance(.5);
+            border-radius: 50%;
+            float: left;
+            margin-right: distance(.5);
+        }
+
+        .is-active
+        {
+            border: 1px solid $color-grey-light; 
+            padding: 0 distance(.5);
+        }
+
+        .is-disable
+        {
+            &, a
+            {
+              color: $color-grey;
+            }
+
+            .pin
+            {
+                background-color: $color-grey!important;
+            }
+        }
+    }
+}
+
+// --------------------------------------------------- CALENDAR
+.events-calendar
+{
+    padding: distance(2);
+}
+
+.column-6 .events-listing
+{
+    padding: 0;
+    &:after
+    {
+        content:'';
+        display: block;
+        clear: both;
+    }
+
+    .event-item
+    {
+        float: left;
+        width:100%;
+        line-height: distance(1.5);
+        padding: distance() distance(2);
+        border-bottom: 1px solid $color-white-dark;
+        background: $color-white;
+        transition: duration();
+
+        &:after
+        {
+            content: '';
+            display: block;
+            clear: both; 
+        }
+
+        
+        .event-link
+        {
+            display: block;
+        transform: scale(1);
+        transition: duration();
+        }
+
+        &:hover {
+            background: rgba($color-white-dark, .5);
+            .event-link
+            {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .left
+    {
+        float: left;
+        text-align: right;
+        margin-right: distance();
+        color: $color-orange;
+
+        .game
+        {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+
+    .right
+    {
+    }
+
+    .score
+    { 
+        float: right;
+        line-height: distance(3);
+        font-size: 16px;
+        font-weight: bold;
+        color: $color-grey;
+    }
+
+    .event-teams
+    {
+        font-size: 16px; 
+    }
+}

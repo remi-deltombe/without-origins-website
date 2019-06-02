@@ -3,18 +3,28 @@ url = "/"
 layout = "default"
 description = "Homepage"
 is_hidden = 0
+contentType = "html"
+force_show = 0
 
 [newsItems]
-count = 4
+count = 6
 is_paginated = 0
-display_categories = false
+display_categories = 0
+
 [esportResults]
 count = 4
 is_paginated = 0
+
+[eventsWidget]
+count = 6
+
 ==
 {% partial 'frame' title="News" icon="fas fa-rss" component="newsItems" %}
 <div class="columns">
     <div class="column column-6">
         {% partial 'frame' title="Dernier resultats" icon="fas fa-gamepad" component="esportResults" %}
+    </div>
+    <div class="column column-6 is-homepage">
+        {% partial 'frame' title="Prochain évenements" icon="far fa-calendar-alt" component="eventsWidget" %}
     </div>
 </div>

@@ -1,0 +1,70 @@
+@import './variables.scss';
+
+// --------------------------------------------------- HEADER
+.module-album
+{
+    &:after
+    {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .album-item
+    {
+        float: left;
+
+
+        img
+        {
+            display: block;
+            padding: 0;
+            margin: 0;
+            transition: duration();
+        }
+    
+        a
+        {
+            position: relative;
+            display: block;
+            background: $color-blue-dark;
+
+            &:before, &:after
+            {
+                content: '';
+                z-index: 1;
+                display: block;
+                position: absolute;
+                width: distance(2);
+                height: 2px;
+                background-color: rgba($color-white, 0);
+                top:50%;
+                left:50%;
+                margin-left: distance(-1);
+                margin-top: -1px;
+                transform: rotate(0deg);
+                transition: duration();
+            }
+
+            &:before{
+                transform: rotate(90deg);
+            }
+        }
+    
+        a:hover 
+        {
+            img { opacity: 0.3; }
+            &:after
+            {
+                background-color: rgba($color-white, 1);
+                transform: rotate(90deg);
+            }
+            &:before
+            {
+                background-color: rgba($color-white, 1);
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+

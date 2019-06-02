@@ -1,0 +1,29 @@
+@import './variables.scss';
+
+// --------------------------------------------------- Games
+.module-cookies
+{
+    z-index: 1000;
+    position: fixed;
+    bottom: distance(2);
+    right : distance(2);
+    padding: distance(1.5);
+    background: $color-white;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    width: 400px;
+
+    .title, .desc 
+    {
+        padding-bottom: distance();
+    }
+
+    .title
+    {
+        font-size: distance(2);
+    }
+
+    .button
+    {
+        cursor: pointer;
+    }
+}

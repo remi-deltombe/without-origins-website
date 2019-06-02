@@ -1,4 +1,8 @@
 fields:
+    is_active:
+        label: Active
+        span: full
+        type: switch
     name:
         label: Name
         span: auto

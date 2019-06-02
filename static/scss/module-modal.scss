@@ -1,0 +1,92 @@
+@import './variables.scss';
+
+
+// --------------------------------------------------- HEADER
+.module-modal
+{
+    position: fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    z-index: 100;
+    left:0;
+    background: rgba(0,0,0,.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    &.is-opened 
+    {
+        display: flex;
+    }
+
+    .modal-content {
+        position: relative;
+        max-width: $site-width;
+        padding: distance();
+        background: $color-white;
+    }
+
+    .close,
+    .next,
+    .prev
+    {
+        position: absolute;
+        width: distance(3);
+        height: distance(3);
+        border-radius: 100%;
+        cursor: pointer;
+        border: 1px solid $color-white;
+
+        &:before,
+        &:after
+        {
+            content:'';
+            display: block;
+            position: absolute;
+            height:1px;
+            width: distance(1);
+            background: $color-white;
+            top: 50%;
+            left: 50%;
+            margin-left: distance(-.5);
+            transform: rotate(45deg);
+        }
+
+        &:before
+        {
+            transform: rotate(-45deg);
+        }
+    }
+
+    .close
+    {
+        top: distance(-1);
+        right: distance(-1);
+        width: distance(2);
+        height: distance(2);
+        background: $color-blue-dark;
+    }
+
+    .next,
+    .prev
+    {
+        left: distance(-5);
+        top: 50%;
+        margin-top: distance(-1.5);
+
+        &:before,
+        &:after
+        {
+            transform-origin: left;
+        }
+    }
+
+    .next
+    {
+        left: auto;
+        right: distance(-5);
+        transform: rotate(180deg);
+    }
+}
+

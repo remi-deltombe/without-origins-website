@@ -1,0 +1,11 @@
+title = "Events detail"
+url = "/events/:slug"
+layout = "default"
+is_hidden = 0
+
+[eventsEvent]
+slug = "{{ :slug }}"
+==
+
+{% set item = eventsEvent.item() %}
+{% partial 'frame' title="Events" image=item.image icon="far fa-calendar-alt" component="eventsEvent" %}

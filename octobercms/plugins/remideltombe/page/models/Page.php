@@ -16,7 +16,6 @@ class Page extends Model
      */
     public $timestamps = true;
 
-
     /**
      * @var string The database table used by the model.
      */
@@ -42,3 +41,4 @@ class Page extends Model
         return $url;
     }
 }
+

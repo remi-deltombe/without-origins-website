@@ -19,7 +19,7 @@ class Plugin extends PluginBase
         if(!App::runningInBackend())
         {
             $slug = Request::segment(1);
-            $game = Game::where('slug', '=', $slug)->first();
+            $game = Game::where('is_active', true)->where('slug', '=', $slug)->first();
             if($game)
             {
                 Game::setContext($game);

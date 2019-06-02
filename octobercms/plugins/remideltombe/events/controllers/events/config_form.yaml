@@ -1,0 +1,10 @@
+name: Events
+form: $/remideltombe/events/models/event/fields.yaml
+modelClass: RemiDeltombe\Events\Models\Event
+defaultRedirect: remideltombe/events/events
+create:
+    redirect: 'remideltombe/events/events/update/:id'
+    redirectClose: remideltombe/events/events
+update:
+    redirect: remideltombe/events/events
+    redirectClose: remideltombe/events/events

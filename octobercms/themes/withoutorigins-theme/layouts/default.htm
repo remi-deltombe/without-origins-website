@@ -75,6 +75,12 @@
                         {% if twitter_link %}
                             {% partial 'frame' title="Tweets" icon="fab fa-twitter" component="socialNetworksTweets" %}
                         {% endif %}
+
+                        <div class="frame is-transparent">
+                            <div class="frame-content">
+                                <iframe style="width:100%" src="https://discordapp.com/widget?id=271644152268062720&theme=dark" height="500" allowtransparency="true" frameborder="0"></iframe>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="column column-left">
@@ -95,6 +101,19 @@
                 <div class="module module-copyright">
                     2019 - Without Origins  All rights reserved
                 </div>
+            </div>
+        </div>
+        <div style="display:none" class="module module-cookies">
+            <div class="content">
+                <div class="title">
+                    Cookies
+                </div>
+                <div class="desc">
+                    Nous utilisons les cookies afin de fournir les services et fonctionnalités proposés sur notre site et afin d’améliorer l’expérience de nos utilisateurs.
+                    <br>
+                    En continuant à utiliser ce site, vous acceptez cette politique.
+                </div>
+                <div class="button">J'ai compris</div>
             </div>
         </div>
         <script src="{{ 'assets/js/script.js'|theme }}"></script>

@@ -1,12 +1,15 @@
 <?php namespace RemiDeltombe\Faker\Models;
 
 use Model;
+use Carbon\Carbon;
 
 use RemiDeltombe\Menu\Models\Menu;
 use RemiDeltombe\Esport\Models\Game;
 use RemiDeltombe\Page\Models\Page;
 use RemiDeltombe\News\Models\Category as NewsCategory;
 use RemiDeltombe\News\Models\Item as NewsItem;
+use RemiDeltombe\Events\Models\Category as EventCategory;
+use RemiDeltombe\Events\Models\Event;
 use RemiDeltombe\Esport\Models\Result as EsportResult;
 
 /**
@@ -90,12 +93,14 @@ class Generation extends Model
         $menu = Menu::find(1);
         if(!$menu)
         {
-            $categories = $this->generateNewsCategories();
+            $newsCategories = $this->generateNewsCategories();
+            $eventsCategories = $this->generateEventCategories();
 
             // Main menu
             $menu = $this->generateMenu('Main menu', false, $this->defaultPages);
             $this->generatePages($this->defaultPages, null);
-            $this->generateNews($categories,null);
+            $this->generateNews($newsCategories,null);
+            $this->generateEvents($eventsCategories,null);
         }
 
         // Generate game and their content if not exists
@@ -116,7 +121,8 @@ class Generation extends Model
                 $game->save();
 
                 $this->generatePages($defaultGame['pages'], $game);
-                $this->generateNews($categories, $game);
+                $this->generateNews($newsCategories, $game);
+                $this->generateEvents($eventsCategories,$game);
                 $this->generateResults($game);
             }
         }
@@ -199,6 +205,22 @@ class Generation extends Model
         {
             $category = new NewsCategory();
             $category->name = $faker->word;
+            $category->save();
+            $categories[] = $category;
+        }
+        return $categories;
+    }
+
+    private function generateEventCategories()
+    {
+        $faker = $faker = \Faker\Factory::create();
+        $categories = [];
+
+        for($i=5; $i>=0; --$i)
+        {
+            $category = new EventCategory();
+            $category->name = $faker->word;
+            $category->color=$faker->hexcolor;
             $category->save();
             $categories[] = $category;
         }
@@ -342,5 +364,51 @@ class Generation extends Model
             "map_image" => $image
         ];
     }
+
+
+    private function generateEvents($categories, $game)
+    {
+        $faker = $faker = \Faker\Factory::create();
+
+        for($i=$faker->numberBetween(1,10); $i>=0; --$i)
+        {
+            $item = new Event();
+
+            $name = $faker->sentence();
+            $slug = $faker->slug();
+            $image = 'no-image.jpg';
+            $description= $faker->text();
+            $html = '<h1>'.$name.'</h1>';
+            $item->date = Carbon::createFromTimestamp($faker->dateTimeBetween($startDate = '+2 days', $endDate = '+1 week')->getTimeStamp()) ;
+
+            for($j=$faker->numberBetween(2,4); $j>=0; --$j)
+            {
+                $h = $faker->numberBetween(2,3);
+                $html .= '<h'.$h.'>'.$faker->sentence().'</h'.$h.'>';
+                $html .= '<p>'.$faker->paragraph().'</p>';
+            }
+
+            $item->game               = $game;
+            $item->category           = $categories[$faker->numberBetween(0, 4)];
+            $item->title              = $name;
+            $item->slug               = $slug;
+            $item->is_active          = true;
+
+            $item->thumb              = $image;
+            $item->description        = $description;
+            $item->publication_author = $faker->name();
+
+            $item->image              = $image;
+            $item->content            = $html;
+            $item->social_title       = $name;
+            $item->social_description = $description;
+            $item->social_image       = $image;
+            $item->seo_title          = $name;
+            $item->seo_description    = $description;
+
+            $item->save();
+        }
+    }
+
 
 }

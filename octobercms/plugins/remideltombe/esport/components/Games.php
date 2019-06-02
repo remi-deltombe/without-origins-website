@@ -19,6 +19,6 @@ class Games extends \Cms\Classes\ComponentBase
 
     public function games()
     {
-        return Game::all();
+        return Game::where('is_active', true)->get();
     }
 }

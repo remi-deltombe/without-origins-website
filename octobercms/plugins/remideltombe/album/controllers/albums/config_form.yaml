@@ -1,0 +1,10 @@
+name: Albums
+form: $/remideltombe/album/models/album/fields.yaml
+modelClass: RemiDeltombe\Album\Models\Album
+defaultRedirect: remideltombe/album/albums
+create:
+    redirect: 'remideltombe/album/albums/update/:id'
+    redirectClose: remideltombe/album/albums
+update:
+    redirect: remideltombe/album/albums
+    redirectClose: remideltombe/album/albums

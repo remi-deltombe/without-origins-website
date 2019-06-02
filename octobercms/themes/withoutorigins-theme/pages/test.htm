@@ -1,0 +1,25 @@
+title = "test"
+url = "/test/:id"
+layout = "default"
+is_hidden = 0
+contentType = "html"
+force_show = 0
+
+[builderDetails]
+modelClass = "Test\Test\Models\Item"
+identifierValue = "{{ :id }}"
+modelKeyColumn = "id"
+displayColumn = "text"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+
+<div class="frame">
+    <div class="frame-content">
+            <div class="wysiwyg">
+            {{ attribute(record, displayColumn) | raw}}
+    </div>
+</div>

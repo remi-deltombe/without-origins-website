@@ -12,7 +12,7 @@ class Items extends \Cms\Classes\ComponentBase
 
     public function init()
     {
-        $this->query =  Item::where('is_active', true);
+        $this->query =  Item::where('is_active', true)->orderBy('publication_date', 'DESC');
         if($game = Game::context())
         {
             $this->query = $this->query->where('game_id', '=', $game->id);
@@ -60,7 +60,7 @@ class Items extends \Cms\Classes\ComponentBase
             $category = Category::where('name', Input::get('category'))->first();
             $this->query = $this->query->where('category_id', $category->id);
         }
-        return $this->query->orderBy('publication_date', 'DESC')->paginate($this->property('count'));
+        return $this->query->paginate($this->property('count'));
     }
 
     public function categories()

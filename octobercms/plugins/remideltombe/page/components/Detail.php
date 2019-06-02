@@ -2,6 +2,7 @@
 
 use RemiDeltombe\Page\Models\Page;
 use RemiDeltombe\Esport\Models\Game;
+use Redirect;
 
 class Detail extends \Cms\Classes\ComponentBase
 {
@@ -51,5 +52,7 @@ class Detail extends \Cms\Classes\ComponentBase
         {
             return $page;
         }
+        header('Location: /404');
+        die;
     }
 }

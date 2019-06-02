@@ -137,9 +137,13 @@
     .menu-item
     {
         a:hover,
-        .is-active a
+        &.is-active a
         {
             color: $color-white;
+        }
+        .menu-item
+        {
+            background: $color-blue-dark;
         }
     }
 }

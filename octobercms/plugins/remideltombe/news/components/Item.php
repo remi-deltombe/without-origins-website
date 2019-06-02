@@ -38,8 +38,17 @@ class Item extends \Cms\Classes\ComponentBase
     {
         if(strlen($this->property('slug')))
         {
-            return NewsItem::where('slug', $this->property('slug'))->first();
+            $item = NewsItem::where('slug', $this->property('slug'))->first();
         }
-        return NewsItem::find($this->property('id'));
+        else
+        {
+            $item = NewsItem::find($this->property('id'));
+        }
+        if($item)
+        {
+            return $item;
+        }
+        header('Location: /404');
+        die;
     }
 }

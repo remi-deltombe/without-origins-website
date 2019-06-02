@@ -1,0 +1,14 @@
+
+<div class="module module-events">
+    <div class="events-detail">
+        {% set event = eventsEvent.event() %}
+        {% if event %}
+            {% set og_image = event.social_image | resize(500, 500) %}
+            {{share_as(event.link(), event.social_title, event.social_description, og_image)}}
+            {{describe(event.seo_title, event.seo_description)}}
+            <div class="wysiwyg">
+                {{ event.content | album | raw }}
+            </div>
+        {% endif %}
+    </div>
+</div>

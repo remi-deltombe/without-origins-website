@@ -11,7 +11,7 @@ class Results extends \Cms\Classes\ComponentBase
 
     public function init()
     {
-        $this->query =  Result::where('is_active', true);
+        $this->query =  Result::where('is_active', true)->orderBy('publication_date', 'DESC');
         if($game = Game::context())
         {
             $this->query = $this->query->where('game_id', '=', $game->id);
