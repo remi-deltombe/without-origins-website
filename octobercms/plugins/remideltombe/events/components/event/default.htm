@@ -6,6 +6,8 @@
             {% set og_image = event.social_image | resize(500, 500) %}
             {{share_as(event.link(), event.social_title, event.social_description, og_image)}}
             {{describe(event.seo_title, event.seo_description)}}
+            <div class="title">{{event.title}}</div>
+            <div class="date">Le {{event.date|date("d/m/Y à H:i")}} </div>
             <div class="wysiwyg">
                 {{ event.content | album | raw }}
             </div>

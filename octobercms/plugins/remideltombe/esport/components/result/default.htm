@@ -4,20 +4,24 @@
     <div class="result-detail">
         <div class="result-header">
             <div class="result-header-team">
-                <div class="background">
-                    <div class="image" style="background-image:url({{item.team_a_logo | media | resize(300, 100, { mode : 'crop' }) }}"></div>
-                </div>
-                <div class="logo">
-                    <img src="{{item.team_a_logo | media | resize(86, 86, { mode : 'crop' }) }}" alt="">
-                </div>
+                {% if item.team_a_logo | length %}
+                    <div class="background">
+                        <div class="image" style="background-image:url({{item.team_a_logo | media | resize(300, 100, { mode : 'crop' }) }}"></div>
+                    </div>
+                    <div class="logo">
+                        <img src="{{item.team_a_logo | media | resize(86, 86, { mode : 'crop' }) }}" alt="">
+                    </div>
+                {% endif %}
             </div>
             <div class="result-header-team">
-                <div class="background">
-                    <div class="image" style="background-image:url({{item.team_b_logo | media | resize(300, 100, { mode : 'crop' }) }}"></div>
-                </div>
-                <div class="logo">
-                    <img src="{{item.team_b_logo | media | resize(86, 86, { mode : 'crop' }) }}" alt="">
-                </div>
+                {% if item.team_b_logo | length %}
+                    <div class="background">
+                        <div class="image" style="background-image:url({{item.team_b_logo | media | resize(300, 100, { mode : 'crop' }) }}"></div>
+                    </div>
+                    <div class="logo">
+                        <img src="{{item.team_b_logo | media | resize(86, 86, { mode : 'crop' }) }}" alt="">
+                    </div>
+                {% endif %}
             </div>
             <div class="result-header-title">
                 <div class="title">

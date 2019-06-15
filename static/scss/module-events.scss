@@ -326,3 +326,34 @@
         font-size: 16px; 
     }
 }
+
+
+.events-detail
+{
+    .title 
+    {
+        margin: 0 distance(2) ;
+        padding: distance(4) 0 distance(2);
+        font-size: 40px;
+    } 
+    .date
+    {
+        position: relative;
+        margin: 0 distance(2);
+        padding-bottom: distance();
+        font-size: 20px;
+        border-bottom: 1px solid $color-orange;
+
+        &:after
+        {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -1px;
+            left: 0; 
+            right: 70%;
+            height: 1px;
+            background: $color-blue-dark;
+        }
+    }
+}

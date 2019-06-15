@@ -1,0 +1,231 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        required: 1
+        dependsOn: {  }
+        preset:
+            field: title
+            type: slug
+        type: text
+    game:
+        label: Game
+        nameFrom: name
+        descriptionFrom: description
+        emptyOption: None
+        span: auto
+        required: 1
+        context:
+            - create
+        type: relation
+    our_team:
+        label: 'Our team'
+        options:
+            1: 'Team A'
+            2: 'Team B'
+        emptyOption: None
+        showSearch: true
+        span: auto
+        default: '1'
+        type: dropdown
+    is_active:
+        label: Active
+        span: auto
+        type: switch
+tabs:
+    fields:
+        image:
+            label: Image
+            mode: image
+            imageWidth: '1692'
+            span: auto
+            context:
+                - update
+                - preview
+            type: mediafinder
+            tab: Detail
+        content:
+            label: Content
+            size: giant
+            span: full
+            type: richeditor
+            tab: Detail
+        thumb:
+            label: Thumb
+            mode: image
+            imageWidth: '288'
+            imageHeight: '288'
+            span: auto
+            type: mediafinder
+            tab: List
+        description:
+            label: Description
+            size: ''
+            span: auto
+            type: textarea
+            tab: List
+        social_title:
+            label: Title
+            span: auto
+            type: text
+            tab: 'Social networks'
+        social_description:
+            label: Description
+            size: ''
+            span: auto
+            defaultFrom: description
+            type: textarea
+            tab: 'Social networks'
+        seo_title:
+            label: Title
+            span: auto
+            type: text
+            tab: SEO
+        seo_description:
+            label: Description
+            size: ''
+            span: auto
+            defaultFrom: description
+            type: textarea
+            tab: SEO
+        publication_author:
+            label: Author
+            span: auto
+            type: text
+            tab: Publication
+        publication_date:
+            label: Date
+            mode: datetime
+            span: auto
+            type: datepicker
+            tab: Publication
+            default: now
+        section1:
+            label: 'Team 1'
+            span: auto
+            type: section
+            tab: Teams
+        section2:
+            label: 'Team 2'
+            span: auto
+            type: section
+            tab: Teams
+        team_a_name:
+            label: Name
+            span: auto
+            type: text
+            tab: Teams
+            default: 'Without Ørigins'
+        team_b_name:
+            label: Name
+            span: auto
+            type: text
+            tab: Teams
+        team_a_logo:
+            label: Logo
+            mode: file
+            span: auto
+            type: mediafinder
+            tab: Teams
+            default: /icone.png
+        team_b_logo:
+            label: Logo
+            mode: file
+            span: auto
+            type: mediafinder
+            tab: Teams
+        team_a_color:
+            label: Color
+            span: auto
+            type: colorpicker
+            tab: Teams
+            default: '#f57700'
+        team_b_color:
+            label: Color
+            span: auto
+            type: colorpicker
+            tab: Teams
+        matches:
+            label: Matches
+            prompt: 'Add new match'
+            span: full
+            context:
+                - update
+                - preview
+            type: repeater
+            tab: Matches
+            form:
+                fields:
+                    winner:
+                        label: Winner
+                        options:
+                            1: 'Team 1'
+                            2: 'Team 2'
+                        span: full
+                        type: balloon-selector
+                    replay:
+                        label: Replay
+                        span: auto
+                        type: fileupload
+                    description:
+                        label: Description
+                        size: ''
+                        span: full
+                        type: richeditor
+                    section4:
+                        label: 'Team 1'
+                        span: left
+                        cssClass: clearfix
+                        type: section
+                    section5:
+                        label: 'Team 2'
+                        span: auto
+                        type: section
+                    team_a_players:
+                        label: Players
+                        prompt: 'Add new player'
+                        span: auto
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: auto
+                                    type: text
+                                race_id:
+                                    label: Race/Champion
+                                    span: auto
+                                    type: dropdown
+                    team_b_players:
+                        label: Players
+                        prompt: 'Add new player'
+                        span: auto
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: auto
+                                    type: text
+                                race_id:
+                                    label: Race/Champion
+                                    span: auto
+                                    type: dropdown
+                    section1:
+                        label: Map
+                        span: full
+                        type: section
+                    map_name:
+                        label: Name
+                        span: auto
+                        type: text
+                    map_image:
+                        label: Image
+                        mode: image
+                        span: auto
+                        type: mediafinder

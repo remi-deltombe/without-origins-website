@@ -1,0 +1,119 @@
+{% set items=__SELF__.items() %}
+<div class="module module-news">
+    {% if __SELF__.property('display_categories') %}
+        <div class="news-categories">
+            <div class="pagination">
+                {% if input('category') %}
+                    <div class="pagination-item"><a href="{{ current_url([],['category', 'page']) }}">Toutes</a></div>
+                {% endif %}
+                {% for category in __SELF__.categories() %}
+                    {% if category.name == input('category') %}
+                        <div class="pagination-item is-active">{{ category.name }}</div>
+                    {% else %}
+                        <div class="pagination-item"><a href="{{ current_url({category:category.name},['page']) }}">{{ category.name }}</a></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="news-listing">
+        {% if items | length %}
+            {% for item in items %}
+                <div class="news-item">
+                    <a class="news-link" href="{{item.link()}}">
+                        <div class="news-image">
+                             <img src="{{ item.thumb | media | resize(200, 200, { mode : 'crop' })}}" alt="News" width=200 height=200>
+                        </div>
+                        <div class="news-title">{{ item.title }}</div>
+                        {% if item.publication_date or item.publication_author %}
+                            <div class="news-author"> 
+
+                                {% if item.publication_date %}
+                                le {{item.publication_date|date("d/m")}} 
+                                {% endif  %}
+                                {% if item.publication_author %}
+                                par {{item.publication_author}}
+                                {% endif  %}
+                            </div>
+                        {% endif  %}
+                        <div class="news-content"> {{ item.description | striptags |slice(0, 120) }} </div>
+                        <div class="news-more">
+                            read more >
+                        </div>
+                    </a>
+                    <div class="news-social">
+                        <div class="menu">
+                            <div class="menu-item">
+                                <div class="menu-item-icon"><a target="share" href="https://www.facebook.com/sharer/sharer.php?u={{url(item.link())}}"><span class="icon icon-facebook"><i class="fab fa-facebook-f"></i></span></a></div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-icon"><a target="share" href="https://twitter.com/home?status={{item.social_description}}"><span class="icon icon-twitter"><i class="fab fa-twitter"></i></span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+        <div class="no-result">
+            Aucune news pour le moment
+        </div>
+        {% endif %}
+    </div>
+    {% if __SELF__.property('is_paginated') and items.lastPage > 1 %}
+        <div class="news-pagination">
+            <div class="pagination">
+                {% if items.currentPage > 1 %}
+                    <div class="pagination-item">
+                        <a href="{{ current_url({page:1}) }}">
+                            <<
+                        </a>
+                    </div>
+                {% endif %}
+
+                {% for page in max(1, items.currentPage-3)..min(items.lastPage, items.currentPage+3) %}
+                    {% if items.currentPage == page %}
+                        <div class="pagination-item is-active">
+                            {{ page }}
+                        </div>
+                    {% else %}
+                        <div class="pagination-item">
+                            <a href="{{ current_url({page: page}) }}">
+                                {{ page }}
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                {% if items.lastPage > items.currentPage %}
+                    <div class="pagination-item">
+                        <a href="{{ current_url({page: items.lastPage}) }}">
+                            >>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{#
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
+#}
+

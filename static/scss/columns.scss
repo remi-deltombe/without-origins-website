@@ -31,6 +31,7 @@
 .column-left { @extend .column-8; }
 .column-right { @extend .column-4; float: right;}
 
+/*
 @media screen and (max-width: 1024px) {
  
     .column-m-1 { width: (100% / 12) * 1; }
@@ -60,3 +61,4 @@
     .column-left {  @extend .column-s-4; }
     .column-right { @extend .column-s-4; }
 }
+*/

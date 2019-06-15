@@ -23,16 +23,6 @@ fields:
         context:
             - create
         type: relation
-    our_team:
-        label: 'Our team'
-        options:
-            1: 'Team A'
-            2: 'Team B'
-        emptyOption: None
-        showSearch: true
-        span: auto
-        default: '1'
-        type: dropdown
     is_active:
         label: Active
         span: auto
@@ -105,6 +95,17 @@ tabs:
             type: datepicker
             tab: Publication
             default: now
+        our_team:
+            label: 'Our team'
+            options:
+                1: 'Team A'
+                2: 'Team B'
+            emptyOption: None
+            showSearch: true
+            span: full
+            default: '1'
+            type: dropdown
+            tab: Teams
         section1:
             label: 'Team 1'
             span: auto
@@ -154,11 +155,11 @@ tabs:
             label: Matches
             prompt: 'Add new match'
             span: full
+            type: repeater
+            tab: Matches
             context:
                 - update
                 - preview
-            type: repeater
-            tab: Matches
             form:
                 fields:
                     winner:
@@ -170,8 +171,9 @@ tabs:
                         type: balloon-selector
                     replay:
                         label: Replay
+                        mode: file
                         span: auto
-                        type: fileupload
+                        type: mediafinder
                     description:
                         label: Description
                         size: ''

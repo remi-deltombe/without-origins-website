@@ -8,10 +8,11 @@
                     <a class="event-link" href="{{item.link()}}">
                         <div class="left">
                             <div class="game">{{ item.game.acronym }}</div>
-                            <div class="date">{{ item.publication_date | date('d/m') }}</div>
+                            <div class="date">{{ item.date | date('d/m') }}</div>
                         </div>
                         <div class="right">
-                            <div class="event-title">{{ item.title | slice(0, 40) }}</div>
+                            <div class="event-teams">{{ item.title | slice(0, 40) }}</div>
+                            <div class="event-title">{{ item.description | slice_dot(40) }}</div>
                         </div>
                     </a>
                 </div>

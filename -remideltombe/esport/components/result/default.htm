@@ -1,0 +1,169 @@
+{% set item = __SELF__.item() %}
+{% set score = item.score() %}
+<div class="module module-esport">
+    <div class="result-detail">
+        <div class="result-header">
+            <div class="result-header-team">
+                <div class="background">
+                    <div class="image" style="background-image:url({{item.team_a_logo | media | resize(300, 100, { mode : 'crop' }) }}"></div>
+                </div>
+                <div class="logo">
+                    <img src="{{item.team_a_logo | media | resize(86, 86, { mode : 'crop' }) }}" alt="">
+                </div>
+            </div>
+            <div class="result-header-team">
+                <div class="background">
+                    <div class="image" style="background-image:url({{item.team_b_logo | media | resize(300, 100, { mode : 'crop' }) }}"></div>
+                </div>
+                <div class="logo">
+                    <img src="{{item.team_b_logo | media | resize(86, 86, { mode : 'crop' }) }}" alt="">
+                </div>
+            </div>
+            <div class="result-header-title">
+                <div class="title">
+                    {{item.title | slice(0, 48)}}
+                </div>
+                <div class="date">
+                    {{item.publication_date | date('d/m/Y')}}
+                </div>
+            </div>
+
+            <div class="result-header-score">
+                <div class="team" style="background:{{item.team_a_color}}">
+                    <div class="name">{{item.team_a_name}}</div>
+                    <div class="score" style="color:{{item.team_a_color}}">{{ score.team_a }}</div>
+                </div>
+                <div class="vs">
+                    <div class="content">vs</div>
+                    <div class="bg" style="background:{{item.team_a_color}}"></div>
+                    <div class="bg" style="background:{{item.team_b_color}}"></div>
+                </div>
+                <div class="team" style="background:{{item.team_b_color}}">
+                    <div class="name">{{item.team_b_name}}</div>
+                    <div class="score" style="color:{{item.team_b_color}}">{{ score.team_b }}</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="result-resume">
+            <div class="result-resume-desc">
+                <div class="wysiwyg">
+                        {{ item.content | album | raw }}
+                </div>
+            </div>
+            <div class="result-resume-matches {{ item.isMultiplayer() ? 'is-multiplayer' : '' }}">
+                <table>
+                    <tr>
+                        <th width=24>#</th>
+                        <th>{{item.team_a_name}}</th>
+                        <th>{{item.team_b_name}}</th>
+                    </tr>
+
+                    {% for k, match in item.matches %}
+                        <tr>
+                            <td>{{k+1}}</td>
+                            <td>
+                                {% if match.winner == 1 %}
+                                    <div class="winner">
+                                {% endif %}
+                                {% for player in match.team_a_players %}
+                                    <div class="player">
+                                        <div class="name">{{player.name}}</div>
+                                        <div class="icon"><img src="{{ __SELF__.raceImage(item, player.race_id) | media | resize(24, 24, {'mode':'crop'}) }}" alt=""></div>
+                                    </div>
+                                {% endfor %}
+                                {% if match.winner == 1 %}
+                                    </div>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if match.winner == 2 %}
+                                    <div class="winner">
+                                {% endif %}
+                                {% for player in match.team_b_players %}
+                                    <div class="player">
+                                        <div class="name">{{player.name}}</div>
+                                        <div class="icon"><img src="{{ __SELF__.raceImage(item, player.race_id) | media | resize(24, 24, {'mode':'crop'}) }}" alt=""></div>
+                                    </div>
+                                {% endfor %}
+                                {% if match.winner == 2 %}
+                                    </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div id="matches" class="result-matches module-tabs">
+            <div class="result-matches-tabs">
+                {% for k in item.matches | keys %}
+                    {% if input('tab', 1) == k+1 %}
+                        <div class="tab  is-active">Match {{k+1}}</div>
+                    {% else %}
+                        <div class="tab"><a href="{{current_url({tab:k+1})}}#matches">Match {{k+1}}</a></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="result-matches-contents">
+                {% for k, match in item.matches %}
+                        {% if input('tab', 1) == k+1 %}
+                            <div class="content is-active">
+                        {% else %}
+                            <div class="content">
+                        {% endif %}
+                        <div class="right">
+                            <div class="desc">
+                                <div class="wysiwyg">
+                                    {{ match.description | album | raw}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left">
+                            <div class="winner">
+                                <div class="title">Vainqueur</div>
+                                <div class="team">
+                                    {{ match.winner == 1 ? item.team_a_name : item.team_b_name }}
+                                </div>
+                            </div>
+                            <div class="players">
+                                <div class="team">
+                                    <div class="title">{{ item.team_a_name }}</div>
+                                    {% for player in match.team_a_players %}
+                                        <div class="player">
+                                            <div class="icon"><img src="{{ __SELF__.raceImage(item, player.race_id) | media | resize(24, 24, {'mode':'crop'}) }}" alt=""></div>
+                                            <div class="name">{{player.name}}</div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="team">
+                                    <div class="title">{{ item.team_b_name }}</div>
+                                    {% for player in match.team_b_players %}
+                                        <div class="player">
+                                            <div class="icon"><img src="{{ __SELF__.raceImage(item, player.race_id) | media | resize(24, 24, {'mode':'crop'}) }}" alt=""></div>
+                                            <div class="name">{{player.name}}</div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% if match.replay %}
+                                <div class="download">
+                                    <a href="{{match.replay | media}}" target="_blank" class="button">Download replay</a>
+                                </div>
+                            {% endif %}
+                            {% if match.map_image %}
+                                <div class="map">
+                                    <div class="image"><img src="{{match.map_image | media | resize() }}" alt=""></div>
+                                    <div class="title">{{ match.map_name }}</div>
+                                </div>
+                            {% endif%}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>

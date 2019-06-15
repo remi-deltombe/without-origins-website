@@ -1,0 +1,96 @@
+columns:
+    id:
+        label: Id
+        type: number
+        searchable: true
+        sortable: true
+    category_id:
+        label: Category
+        type: text
+        relation: category
+        select: name
+        searchable: true
+        sortable: true
+    game:
+        label: Game
+        type: partial
+        valueFrom: game_id
+        path: ~/plugins/remideltombe/page/partials/_field_game.htm
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: slug
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    link:
+        label: Link
+        type: partial
+        valueFrom: slug
+        path: ~/plugins/remideltombe/page/partials/_field_link.htm
+    is_active:
+        label: Active
+        type: text
+        searchable: true
+        sortable: true
+    from:
+        label: From
+        type: text
+        searchable: true
+        sortable: true
+    to:
+        label: To
+        type: text
+        searchable: true
+        sortable: true
+    description:
+        label: "List description"
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    publication_author:
+        label: Author
+        type: text
+        searchable: true
+        sortable: true
+    social_title:
+        label: "Social title"
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    social_description:
+        label: "Social description"
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    seo_title:
+        label: "Seo title"
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    seo_description:
+        label: "Seo description"
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    created_at:
+        label: "Created at"
+        type: datetime
+        searchable: true
+        invisible: true
+        sortable: true
+    updated_at:
+        label: "Updated at"
+        type: datetime
+        searchable: true
+        invisible: true
+        sortable: true

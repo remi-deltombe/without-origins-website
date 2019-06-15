@@ -6,3 +6,6 @@
 1.0.3:
     - 'Created table remideltombe_events_event'
     - builder_table_create_remideltombe_events_event.php
+1.0.4:
+    - 'Updated table remideltombe_events_event'
+    - builder_table_update_remideltombe_events_event.php

@@ -1,0 +1,8 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table remideltombe_menu_menu'
+    - builder_table_create_remideltombe_menu_menu.php
+1.0.3:
+    - 'Created table remideltombe_menu_item'
+    - builder_table_create_remideltombe_menu_item.php

@@ -1,0 +1,5 @@
+title: Games
+modelClass: RemiDeltombe\Esport\Models\Game
+nameFrom: sort_order
+toolbar:
+    buttons: reorder_toolbar

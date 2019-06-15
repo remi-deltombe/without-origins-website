@@ -27,10 +27,14 @@
     </div>
 
     <div class="events-calendar-header">
-        <a class="prev" href="{{ __SELF__.previousMonth() }}">&larr;</a>
+        <a class="prev" href="{{ __SELF__.previousMonth() }}">
+            <i class="fas fa-arrow-left"></i>
+        </a>
         <span class="month">{{__SELF__.month()}}</span>
         <span class="year">{{__SELF__.year()}}</span>
-        <a class="next" href="{{ __SELF__.nextMonth() }}">&rarr;</a>
+        <a class="next" href="{{ __SELF__.nextMonth() }}">
+            <i class="fas fa-arrow-right"></i>
+        </a>
     </div>
     <table class="calendar">
         <thead>
@@ -53,19 +57,27 @@
                 {% if loop.first and startDow != 0 %}
                     <td class="calendar-empty" colspan="{{ startDow }}"></td>
                 {% endif %}
-                <td>
+                <td
+                {% if __SELF__.isToday(day) %}
+                class="is-today"
+                {% endif %}>
                     <div class="calendar-day">
                         <div class="calendar-day-number">{{ day }}</div>
                         <div class="calendar-day-content">
                             {% for event in __SELF__.events(day) %}
                                 <div class="calendar-item">
-                                    <div class="calendar-item-miniature"
+                                    <div class="calendar-item-miniature
+                                    "
                                     {% if event.category %}
                                     style="background-color: {{event.category.color}};"
                                     {% endif %}
                                     >
                                         <a class="events-link" href="{{event.link()}}">
-                                            {{event.title}}
+                                            {% if event.calendar_text %}
+                                                {{event.calendar_text}}
+                                            {% else %}
+                                                {{event.title}}
+                                            {% endif %}
                                         </a>
                                     </div>
                                     <div class="calendar-item-detail events-listing">
@@ -76,7 +88,7 @@
                                             <div class="events-title">{{ event.title }}</div>
                                             {% if event.date %}
                                                 <div class="events-author"> 
-                                                    le {{event.date|date("d/m/Y à H:m")}} 
+                                                    le {{event.date|date("d/m/Y à H:i")}} 
                                                 </div>
                                             {% endif  %}
                                             <div class="events-content"> {{ event.description | striptags |slice(0, 120) }} </div>

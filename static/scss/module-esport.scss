@@ -48,6 +48,12 @@
             }
         }
     }
+
+    .esport-title
+    {
+        opacity: 1;
+        transition: .3s;
+    }
 }
 
 .header.is-small
@@ -61,6 +67,11 @@
         {
             height:distance(2);
             margin-top: 3px;
+        }
+
+        .esport-title
+        {
+            opacity: 0;
         }
     }
 }
@@ -188,7 +199,7 @@
                 display: block;
                 position: absolute;
                 left:20%;
-                border: distance(1.5) solid transparent;
+                border: distance(3) solid transparent;
                 border-bottom-color: $color-white;
                 border-left-color: $color-white;
                 top: 3px;
@@ -211,7 +222,7 @@
                 {
                     left:auto;
                     right: 20%;
-                    border: distance(1.5) solid transparent;
+                    border: distance(3) solid transparent;
                     border-bottom-color: $color-white;
                     border-right-color: $color-white;
                 }

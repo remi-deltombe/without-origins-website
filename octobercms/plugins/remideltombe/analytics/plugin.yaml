@@ -1,0 +1,10 @@
+plugin:
+    name: 'remideltombe.analytics::lang.plugin.name'
+    description: 'remideltombe.analytics::lang.plugin.description'
+    author: 'Remi Deltombe'
+    icon: oc-icon-bar-chart
+    homepage: ''
+permissions:
+    remideltombe.analytics.manage:
+        tab: Content
+        label: 'Manage analytics'

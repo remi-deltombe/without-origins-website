@@ -1,0 +1,5 @@
+fields:
+    track_id:
+        label: Track id
+        span: auto
+        type: text

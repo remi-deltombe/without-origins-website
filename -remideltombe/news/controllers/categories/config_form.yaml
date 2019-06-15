@@ -1,0 +1,10 @@
+name: Categories
+form: $/remideltombe/news/models/category/fields.yaml
+modelClass: RemiDeltombe\News\Models\Category
+defaultRedirect: remideltombe/news/categories
+create:
+    redirect: 'remideltombe/news/categories/update/:id'
+    redirectClose: remideltombe/news/categories
+update:
+    redirect: remideltombe/news/categories
+    redirectClose: remideltombe/news/categories

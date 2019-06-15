@@ -27,6 +27,12 @@ columns:
         searchable: true
         invisible: true
         sortable: true
+    date:
+        label: date
+        type: text
+        searchable: true
+        sortable: true
+
     link:
         label: Link
         type: partial
@@ -37,18 +43,8 @@ columns:
         type: text
         searchable: true
         sortable: true
-    from:
-        label: From
-        type: text
-        searchable: true
-        sortable: true
-    to:
-        label: To
-        type: text
-        searchable: true
-        sortable: true
     description:
-        label: "List description"
+        label: 'List description'
         type: text
         searchable: true
         invisible: true
@@ -59,37 +55,37 @@ columns:
         searchable: true
         sortable: true
     social_title:
-        label: "Social title"
+        label: 'Social title'
         type: text
         searchable: true
         invisible: true
         sortable: true
     social_description:
-        label: "Social description"
+        label: 'Social description'
         type: text
         searchable: true
         invisible: true
         sortable: true
     seo_title:
-        label: "Seo title"
+        label: 'Seo title'
         type: text
         searchable: true
         invisible: true
         sortable: true
     seo_description:
-        label: "Seo description"
+        label: 'Seo description'
         type: text
         searchable: true
         invisible: true
         sortable: true
     created_at:
-        label: "Created at"
+        label: 'Created at'
         type: datetime
         searchable: true
         invisible: true
         sortable: true
     updated_at:
-        label: "Updated at"
+        label: 'Updated at'
         type: datetime
         searchable: true
         invisible: true

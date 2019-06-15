@@ -1,0 +1,10 @@
+name: Categories
+form: $/remideltombe/events/models/category/fields.yaml
+modelClass: RemiDeltombe\Events\Models\Category
+defaultRedirect: remideltombe/events/categories
+create:
+    redirect: 'remideltombe/events/categories/update/:id'
+    redirectClose: remideltombe/events/categories
+update:
+    redirect: remideltombe/events/categories
+    redirectClose: remideltombe/events/categories

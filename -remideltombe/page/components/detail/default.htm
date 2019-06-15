@@ -1,0 +1,10 @@
+<div class="module module-page">
+    <div class="page-detail">
+        <div class="wysiwyg">
+            {% set item = __SELF__.item() %}
+            {% if item %}
+                {{ item.content | album | raw }}
+            {% endif %}
+        </div>
+    </div>
+</div>

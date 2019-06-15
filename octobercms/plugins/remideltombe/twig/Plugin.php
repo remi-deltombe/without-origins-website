@@ -102,6 +102,13 @@ class Plugin extends PluginBase
                         }
                     }
                     return '/'.Request::path() . $params;
+                },
+            ],
+            'filters'=>[
+                'slice_dot' => function($content, $length)
+                {
+                    if(strlen($content)<=$length) return $content;
+                    return substr($content, 0, $length) . '...';
                 }
             ]
         ];

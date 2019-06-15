@@ -33,7 +33,7 @@ class Result extends Model
     public $belongsTo = [
         'game' => ['RemiDeltombe\Esport\Models\Game']
     ];
-    
+
     protected $jsonable = ['matches'];
 
     public function link()

@@ -1,0 +1,7 @@
+columns:
+    id:
+        label: ID
+        type: number
+    created_at:
+        label: 'Created at'
+        type: datetime

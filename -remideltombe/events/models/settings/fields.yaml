@@ -1,0 +1,5 @@
+fields:
+    detail_slug:
+        label: "Detail page slug"
+        span: auto
+        type: text

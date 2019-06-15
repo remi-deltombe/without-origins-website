@@ -95,3 +95,9 @@ tabs:
             span: auto
             type: text
             tab: Publication
+        calendar_text:
+            label: 'Calendar text'
+            size: ''
+            span: auto
+            type: textarea
+            tab: Calendar

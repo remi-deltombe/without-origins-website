@@ -4,12 +4,12 @@ html
 {
     background: #eaeaea;
     width: 100%;
-    overflow-x: hidden;
 }
 
 html, body 
 {
     height: 100%;
+    min-width: 1024px;
 }
 
 // --------------------------------------------------- HEADER

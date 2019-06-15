@@ -71,9 +71,8 @@ class Calendar extends \Cms\Classes\ComponentBase
         if($day)
         {
             $date = Carbon::create(
-                Input::get('year', 
-                Carbon::now()->year),
-                Input::get('month', Carbon::now()->month),
+                $this->yearNumber(),
+                $this->monthNumber(),
                 $day, 
                 0,
                 0,
@@ -93,12 +92,12 @@ class Calendar extends \Cms\Classes\ComponentBase
 
     public function year()
     {
-        return intval(Input::get('year', Carbon::now()->year));
+        return intval($this->yearNumber());
     }
 
     public function month()
     {
-        $monthNumber = Carbon::create(0, Input::get('month', Carbon::now()->month), 1, 0, 0, 0, 'Europe/Luxembourg')->month;
+        $monthNumber = Carbon::create(0, $this->monthNumber(), 1, 0, 0, 0, 'Europe/Luxembourg')->month;
         $months = [
             'Janvier',
             'Février',
@@ -119,8 +118,8 @@ class Calendar extends \Cms\Classes\ComponentBase
     public function previousMonth()
     {
         $prev = Carbon::create(
-            Input::get('year', Carbon::now()->year),
-            Input::get('month', Carbon::now()->month),
+            $this->yearNumber(),
+            $this->monthNumber(),
             1,
             0, 
             0,
@@ -135,8 +134,8 @@ class Calendar extends \Cms\Classes\ComponentBase
     public function nextMonth()
     {
         $next = Carbon::create(
-            Input::get('year', Carbon::now()->year),
-            Input::get('month', Carbon::now()->month),
+            $this->yearNumber(),
+            $this->monthNumber(),
             1, 
             0, 
             0,
@@ -146,5 +145,35 @@ class Calendar extends \Cms\Classes\ComponentBase
         $month=$next->month;
         $year=$next->year;
         return "?month=$month&year=$year";
+    }
+
+    public function isToday($day)
+    {
+        $s = 'd:m:Y';
+        $now = Carbon::now();
+        $compared =  Carbon::create(
+                $this->yearNumber(),
+                $this->monthNumber(),
+                $day, 
+                0,
+                0,
+                0,
+                'Europe/Luxembourg'
+        );
+        return $now->format($s) == $compared->format($s);
+    }
+
+    private function monthNumber()
+    {
+        $month = intval(Input::get('month' , Carbon::now()->month));
+        if($month < 1 || $month > 12 ) return Carbon::now()->month;
+        return $month;
+    }
+
+    private function yearNumber()
+    {
+        $year = intval(Input::get('year' , Carbon::now()->year));
+        if($year < 1 ) return Carbon::now()->year;
+        return $year;
     }
 }
