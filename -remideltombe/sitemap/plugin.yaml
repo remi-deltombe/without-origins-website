@@ -1,6 +1,0 @@
-plugin:
-    name: 'remideltombe.sitemap::lang.plugin.name'
-    description: 'remideltombe.sitemap::lang.plugin.description'
-    author: 'Remi Deltombe'
-    icon: oc-icon-sitemap
-    homepage: ''

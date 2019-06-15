@@ -1,7 +1,0 @@
-fields:
-    options:
-        label: Options
-        span: full
-        size: giant
-        language: php
-        type: codeeditor

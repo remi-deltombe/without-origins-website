@@ -1,6 +1,0 @@
-plugin:
-    name: 'remideltombe.attach::lang.plugin.name'
-    description: 'remideltombe.attach::lang.plugin.description'
-    author: 'Remi Deltombe'
-    icon: oc-icon-upload
-    homepage: ''

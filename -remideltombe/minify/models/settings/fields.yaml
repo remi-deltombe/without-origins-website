@@ -1,5 +1,0 @@
-fields:
-    is_active:
-        label: Active
-        span: auto
-        type: checkbox
